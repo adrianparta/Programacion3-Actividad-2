@@ -24,14 +24,17 @@ namespace Business
             this.command = new SqlCommand();
         }
 
-        public void SetQuery(string query, SqlParameterCollection parameters)
+        public void SetQuery(string query, SqlParameterCollection parameters = null)
         {
             this.command.CommandType = CommandType.Text;
             this.command.CommandText = query;
+if(parameters != null)
+{
             foreach (var parameter in parameters)
             {
                 this.command.Parameters.Add(parameter);
             }
+}
         }
 
         public bool ExecuteQuery()

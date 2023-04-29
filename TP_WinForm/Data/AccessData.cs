@@ -6,13 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business
+namespace Data
 {
     public class AccessData
     {
         private readonly SqlConnection connection;
         private readonly SqlCommand command;
         private SqlDataReader reader;
+        private string connectionString = @"Server=.;Database=CATALOGO_P3_DB;Trusted_Connection=True;";
         public SqlDataReader Reader
         {
             get { return reader; }
@@ -20,21 +21,22 @@ namespace Business
 
         public AccessData()
         {
-            this.connection = new SqlConnection(@"Server=.;Database=CATALOGO_P3_DB;Trusted_Connection=True;");
+            this.connection = new SqlConnection(connectionString);
             this.command = new SqlCommand();
+
         }
 
         public void SetQuery(string query, SqlParameterCollection parameters = null)
         {
             this.command.CommandType = CommandType.Text;
             this.command.CommandText = query;
-if(parameters != null)
-{
-            foreach (var parameter in parameters)
+            if (parameters != null)
             {
-                this.command.Parameters.Add(parameter);
+                foreach (var parameter in parameters)
+                {
+                    this.command.Parameters.Add(parameter);
+                }
             }
-}
         }
 
         public bool ExecuteQuery()
@@ -57,7 +59,7 @@ if(parameters != null)
             {
                 this.command.Connection = this.connection;
                 this.connection.Open();
-                return this.command.ExecuteNonQuery();   
+                return this.command.ExecuteNonQuery();
             }
             catch (Exception)
             {

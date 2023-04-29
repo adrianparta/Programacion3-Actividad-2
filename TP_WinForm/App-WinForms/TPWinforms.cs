@@ -15,7 +15,10 @@ namespace App_WinForms
 
         private void TPWinforms_Load(object sender, EventArgs e)
         {
-            
+            List<Item> items = new List<Item>();
+            ItemBusiness itemBusiness = new ItemBusiness();
+            dataGridView1.DataSource = itemBusiness.list();
+
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace App_WinForms
 {
-    public partial class Form1 : Form
+    public partial class CategoryList : Form
     {
-        public Form1()
+        public CategoryList()
         {
             InitializeComponent();
         }

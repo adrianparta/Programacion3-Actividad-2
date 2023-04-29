@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain
+namespace Business
 {
-    public class Categoria
+    internal class BrandBusiness
     {
-        public int ID { get; set; }
-        public string Descripcion { get; set; }
     }
 }

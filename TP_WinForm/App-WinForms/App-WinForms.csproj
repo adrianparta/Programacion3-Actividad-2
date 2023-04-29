@@ -46,14 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="BrandList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="BrandList.Designer.cs">
+      <DependentUpon>BrandList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryList.Designer.cs">
+      <DependentUpon>CategoryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemDetails.Designer.cs">
+      <DependentUpon>ItemDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TPWinforms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TPWinforms.Designer.cs">
+      <DependentUpon>TPWinforms.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ItemDetails.resx">
+      <DependentUpon>ItemDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TPWinforms.resx">
+      <DependentUpon>TPWinforms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +99,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Business\Business.csproj">
+      <Project>{07dadff2-8cb1-43d4-9788-c828621d0f88}</Project>
+      <Name>Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{5a1edc1b-7862-4402-a380-912a328f4f5a}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

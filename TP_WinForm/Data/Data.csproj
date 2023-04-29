@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{07DADFF2-8CB1-43D4-9788-C828621D0F88}</ProjectGuid>
+    <ProjectGuid>{D8C24556-2DCA-46C2-8B35-8C6464CBE6A5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Business</RootNamespace>
@@ -41,16 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BrandBusiness.cs" />
-    <Compile Include="CategoryBusiness.cs" />
-    <Compile Include="ItemBusiness.cs" />
+    <Compile Include="AccessData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Data\Data.csproj">
-      <Project>{d8c24556-2dca-46c2-8b35-8c6464cbe6a5}</Project>
-      <Name>Data</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

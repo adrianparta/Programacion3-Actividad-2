@@ -10,13 +10,13 @@ namespace Business
 {
     public class BrandBusiness
     {
-        public List<Brand> List()
+        public static List<Brand> List()
         {
             List<Brand> brandList = new List<Brand>();
             AccessData data = new AccessData();
             try
             {
-                data.SetQuery(@"SELECT * FROM MARCAS");
+                data.SetQuery(@"SELECT Id, Descripcion FROM MARCAS");
                 data.ExecuteQuery();
 
                 while (data.Reader.Read())

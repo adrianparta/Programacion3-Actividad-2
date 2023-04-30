@@ -10,13 +10,13 @@ namespace Business
 {
     public class CategoryBusiness
     {
-        public List<Category> List()
+        public static List<Category> List()
         {
             List<Category> categoryList = new List<Category>();
             AccessData data = new AccessData();
             try
             {
-                data.SetQuery(@"SELECT * FROM CATEGORIAS");
+                data.SetQuery(@"SELECT Id, Descripcion FROM CATEGORIAS");
                 data.ExecuteQuery();
 
                 while (data.Reader.Read())

@@ -17,8 +17,7 @@ namespace App_WinForms
         public BrandList()
         {
             InitializeComponent();
-            brandBusiness= new BrandBusiness();
-            dataGridViewBrands.DataSource = brandBusiness.List();
+            dataGridViewBrands.DataSource = BrandBusiness.List();
         }
     }
 }

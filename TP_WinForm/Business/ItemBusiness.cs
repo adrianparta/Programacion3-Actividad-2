@@ -12,7 +12,7 @@ namespace Business
 {
     public class ItemBusiness
     {
-        public List<Item> List()
+        public static List<Item> List()
         {
             List<Item> itemList = new List<Item>();
             AccessData data = new AccessData();
@@ -23,12 +23,12 @@ namespace Business
                                     , a.Codigo
                                     , a.Nombre
                                     , a.Descripcion
-                                    , m.Descripcion as Marca
-                                    , c.Descripcion as Categoria
+                                    , ISNULL(m.Descripcion,'Sin Asignar') as Marca
+                                    , ISNULL(c.Descripcion,'Sin Asignar') as Categoria
                                     , a.Precio 
                                 FROM ARTICULOS a
-                                INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
-                                INNER JOIN MARCAS m ON a.IdMarca = m.Id ");
+                                LEFT JOIN CATEGORIAS c ON a.IdCategoria = c.Id
+                                LEFT JOIN MARCAS m ON a.IdMarca = m.Id ");
                 data.ExecuteQuery();
 
                 while (data.Reader.Read())

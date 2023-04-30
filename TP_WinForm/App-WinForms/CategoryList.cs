@@ -17,8 +17,7 @@ namespace App_WinForms
         public CategoryList()
         {
             InitializeComponent();
-            categoryBusiness = new CategoryBusiness();
-            dataGridViewCategories.DataSource = categoryBusiness.List();
+            dataGridViewCategories.DataSource = CategoryBusiness.List();
         }
 
         private void buttonAddCategory_Click(object sender, EventArgs e)

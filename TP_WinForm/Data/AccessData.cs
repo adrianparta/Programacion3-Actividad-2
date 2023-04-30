@@ -21,8 +21,13 @@ namespace Data
 
         public AccessData()
         {
+            if(Environment.MachineName == "DESKTOP-J4H7KBG")
+            {
+                connectionString = @"Server=DESKTOP-J4H7KBG\SQLEXPRESS;Database=CATALOGO_P3_DB;Trusted_Connection=True;";
+            }
             this.connection = new SqlConnection(connectionString);
             this.command = new SqlCommand();
+
         }
 
         public void SetQuery(string query, SqlParameterCollection parameters = null)

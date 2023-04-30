@@ -13,7 +13,6 @@ namespace App_WinForms
 {
     public partial class BrandList : Form
     {
-        private BrandBusiness brandBusiness;
         public BrandList()
         {
             InitializeComponent();

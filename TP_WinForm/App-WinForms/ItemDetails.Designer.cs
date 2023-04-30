@@ -57,7 +57,7 @@
             this.labelID.AutoSize = true;
             this.labelID.Location = new System.Drawing.Point(30, 30);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 13);
+            this.labelID.Size = new System.Drawing.Size(19, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "Id:";
             // 
@@ -182,6 +182,7 @@
             this.pictureBoxImages.Location = new System.Drawing.Point(293, 190);
             this.pictureBoxImages.Name = "pictureBoxImages";
             this.pictureBoxImages.Size = new System.Drawing.Size(233, 100);
+            this.pictureBoxImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImages.TabIndex = 16;
             this.pictureBoxImages.TabStop = false;
             // 
@@ -220,6 +221,7 @@
             this.buttonNextImage.TabIndex = 20;
             this.buttonNextImage.Text = "→";
             this.buttonNextImage.UseVisualStyleBackColor = true;
+            this.buttonNextImage.Click += new System.EventHandler(this.buttonNextImage_Click);
             // 
             // buttonPreviousImage
             // 
@@ -229,6 +231,7 @@
             this.buttonPreviousImage.TabIndex = 21;
             this.buttonPreviousImage.Text = "←";
             this.buttonPreviousImage.UseVisualStyleBackColor = true;
+            this.buttonPreviousImage.Click += new System.EventHandler(this.buttonPreviousImage_Click);
             // 
             // ItemDetails
             // 

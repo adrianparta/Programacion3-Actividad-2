@@ -72,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BrandList.resx">
+      <DependentUpon>BrandList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CategoryList.resx">
+      <DependentUpon>CategoryList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemDetails.resx">
       <DependentUpon>ItemDetails.cs</DependentUpon>
     </EmbeddedResource>

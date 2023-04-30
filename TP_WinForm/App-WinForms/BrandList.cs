@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Business;
 
 namespace App_WinForms
 {
     public partial class BrandList : Form
     {
+        private BrandBusiness brandBusiness;
         public BrandList()
         {
             InitializeComponent();
+            brandBusiness= new BrandBusiness();
+            dataGridViewBrands.DataSource = brandBusiness.List();
         }
     }
 }

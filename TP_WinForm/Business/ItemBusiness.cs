@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain;
 using Data;
+using System.Text.RegularExpressions;
 
 
 namespace Business
@@ -13,7 +14,7 @@ namespace Business
     {
         public List<Item> List()
         {
-            List<Item> list = new List<Item>();
+            List<Item> itemList = new List<Item>();
             AccessData data = new AccessData();
             try
             {
@@ -26,13 +27,13 @@ namespace Business
                                     , c.Descripcion as Categoria
                                     , a.Precio 
                                 FROM ARTICULOS a
-                                INNER JOIN CATEGORIAS c ON  a.IdCategoria = c.Id
+                                INNER JOIN CATEGORIAS c ON a.IdCategoria = c.Id
                                 INNER JOIN MARCAS m ON a.IdMarca = m.Id ");
                 data.ExecuteQuery();
 
                 while (data.Reader.Read())
                 {
-                    Item aux = new Item
+                    Item itemAux = new Item
                     {
                         Id = (int)data.Reader["Id"],
                         Code = (string)data.Reader["Codigo"],
@@ -48,9 +49,10 @@ namespace Business
                         },
                         Price = Convert.ToDecimal(data.Reader["Precio"])
                     };
+                    itemList.Add(itemAux);
                 }
 
-                return list;        
+                return itemList;        
             }
             catch (Exception ex)
             {

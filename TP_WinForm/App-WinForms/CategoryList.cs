@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,17 @@ namespace App_WinForms
 {
     public partial class CategoryList : Form
     {
+        private CategoryBusiness categoryBusiness;
         public CategoryList()
         {
             InitializeComponent();
+            categoryBusiness = new CategoryBusiness();
+            dataGridViewCategories.DataSource = categoryBusiness.List();
+        }
+
+        private void buttonAddCategory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

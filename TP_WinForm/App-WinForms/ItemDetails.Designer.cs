@@ -59,7 +59,7 @@
             this.labelID.Name = "labelID";
             this.labelID.Size = new System.Drawing.Size(21, 13);
             this.labelID.TabIndex = 0;
-            this.labelID.Text = "ID:";
+            this.labelID.Text = "Id:";
             // 
             // labelName
             // 

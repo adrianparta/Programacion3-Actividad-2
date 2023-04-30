@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataGridViewBrands = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrands)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridViewBrands
+            // 
+            this.dataGridViewBrands.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBrands.Location = new System.Drawing.Point(82, 127);
+            this.dataGridViewBrands.Name = "dataGridViewBrands";
+            this.dataGridViewBrands.Size = new System.Drawing.Size(438, 155);
+            this.dataGridViewBrands.TabIndex = 0;
+            //
+            // BrandList
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dataGridViewBrands);
+            this.Name = "BrandList";
             this.Text = "BrandList";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrands)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView dataGridViewBrands;
     }
 }

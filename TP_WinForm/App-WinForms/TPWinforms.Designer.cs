@@ -28,49 +28,52 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxFilter1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxFilter2 = new System.Windows.Forms.ComboBox();
+            this.dataGridViewItems = new System.Windows.Forms.DataGridView();
+            this.textBoxSearchBar = new System.Windows.Forms.TextBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonViewDetails = new System.Windows.Forms.Button();
             this.buttonBrandWindow = new System.Windows.Forms.Button();
             this.buttonCategoryWindow = new System.Windows.Forms.Button();
             this.buttonDeleteItem = new System.Windows.Forms.Button();
             this.buttonAddItem = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxFilter1
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(354, 31);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxFilter1.FormattingEnabled = true;
+            this.comboBoxFilter1.Location = new System.Drawing.Point(354, 31);
+            this.comboBoxFilter1.Name = "comboBoxFilter1";
+            this.comboBoxFilter1.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxFilter1.TabIndex = 0;
             // 
-            // comboBox2
+            // comboBoxFilter2
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(501, 32);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
+            this.comboBoxFilter2.FormattingEnabled = true;
+            this.comboBoxFilter2.Location = new System.Drawing.Point(501, 32);
+            this.comboBoxFilter2.Name = "comboBoxFilter2";
+            this.comboBoxFilter2.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxFilter2.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewItems
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(39, 74);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(693, 269);
-            this.dataGridView1.TabIndex = 2;
+            this.dataGridViewItems.AllowUserToDeleteRows = false;
+            this.dataGridViewItems.AllowUserToOrderColumns = true;
+            this.dataGridViewItems.AllowUserToResizeRows = false;
+            this.dataGridViewItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewItems.Location = new System.Drawing.Point(39, 74);
+            this.dataGridViewItems.Name = "dataGridViewItems";
+            this.dataGridViewItems.Size = new System.Drawing.Size(693, 269);
+            this.dataGridViewItems.TabIndex = 2;
             // 
-            // textBox1
+            // textBoxSearchBar
             // 
-            this.textBox1.Location = new System.Drawing.Point(39, 32);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(277, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBoxSearchBar.Location = new System.Drawing.Point(39, 32);
+            this.textBoxSearchBar.Name = "textBoxSearchBar";
+            this.textBoxSearchBar.Size = new System.Drawing.Size(277, 20);
+            this.textBoxSearchBar.TabIndex = 3;
             // 
             // buttonSearch
             // 
@@ -80,6 +83,7 @@
             this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "Buscar";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // buttonViewDetails
             // 
@@ -89,6 +93,7 @@
             this.buttonViewDetails.TabIndex = 5;
             this.buttonViewDetails.Text = "Ver Detalles";
             this.buttonViewDetails.UseVisualStyleBackColor = true;
+            this.buttonViewDetails.Click += new System.EventHandler(this.buttonViewDetails_Click);
             // 
             // buttonBrandWindow
             // 
@@ -98,6 +103,7 @@
             this.buttonBrandWindow.TabIndex = 6;
             this.buttonBrandWindow.Text = "Gestionar Marcas";
             this.buttonBrandWindow.UseVisualStyleBackColor = true;
+            this.buttonBrandWindow.Click += new System.EventHandler(this.buttonBrandWindow_Click);
             // 
             // buttonCategoryWindow
             // 
@@ -107,6 +113,7 @@
             this.buttonCategoryWindow.TabIndex = 7;
             this.buttonCategoryWindow.Text = "Gestionar Categorías";
             this.buttonCategoryWindow.UseVisualStyleBackColor = true;
+            this.buttonCategoryWindow.Click += new System.EventHandler(this.buttonCategoryWindow_Click);
             // 
             // buttonDeleteItem
             // 
@@ -125,6 +132,7 @@
             this.buttonAddItem.TabIndex = 9;
             this.buttonAddItem.Text = "Añadir Producto";
             this.buttonAddItem.UseVisualStyleBackColor = true;
+            this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click);
             // 
             // TPWinforms
             // 
@@ -137,14 +145,14 @@
             this.Controls.Add(this.buttonBrandWindow);
             this.Controls.Add(this.buttonViewDetails);
             this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBoxSearchBar);
+            this.Controls.Add(this.dataGridViewItems);
+            this.Controls.Add(this.comboBoxFilter2);
+            this.Controls.Add(this.comboBoxFilter1);
             this.Name = "TPWinforms";
             this.Text = "TPWinforms";
             this.Load += new System.EventHandler(this.TPWinforms_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,10 +160,10 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxFilter1;
+        private System.Windows.Forms.ComboBox comboBoxFilter2;
+        private System.Windows.Forms.DataGridView dataGridViewItems;
+        private System.Windows.Forms.TextBox textBoxSearchBar;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonViewDetails;
         private System.Windows.Forms.Button buttonBrandWindow;

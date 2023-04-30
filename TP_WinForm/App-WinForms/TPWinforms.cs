@@ -8,6 +8,7 @@ namespace App_WinForms
 {
     public partial class TPWinforms : Form
     {
+        private List<Item> itemList;
         public TPWinforms()
         {
             InitializeComponent();
@@ -15,10 +16,38 @@ namespace App_WinForms
 
         private void TPWinforms_Load(object sender, EventArgs e)
         {
-            List<Item> items = new List<Item>();
             ItemBusiness itemBusiness = new ItemBusiness();
-            dataGridView1.DataSource = itemBusiness.List();
+            itemList = itemBusiness.List();
+            dataGridViewItems.DataSource = itemList;
+        }
 
+        private void buttonViewDetails_Click(object sender, EventArgs e)
+        {
+            ItemDetails itemDetails= new ItemDetails(itemList[dataGridViewItems.SelectedCells[0].RowIndex]);
+            itemDetails.ShowDialog();
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void buttonAddItem_Click(object sender, EventArgs e)
+        {
+            ItemDetails itemDetails = new ItemDetails();
+            itemDetails.ShowDialog();
+        }
+
+        private void buttonBrandWindow_Click(object sender, EventArgs e)
+        {
+            BrandList brandList = new BrandList();
+            brandList.ShowDialog();
+        }
+
+        private void buttonCategoryWindow_Click(object sender, EventArgs e)
+        {
+            CategoryList categoryList = new CategoryList();
+            categoryList.ShowDialog();
         }
     }
 }

@@ -4,15 +4,25 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Domain
 {
     public class Category
     {
+        private string description;
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("Descripción")]
-        public string Description { get; set; }
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                if (value.Length < 50 && value.Length > 0) description = value;
+                else description = "error";
+            }
+        }
         public override string ToString()
         {
             return Description;

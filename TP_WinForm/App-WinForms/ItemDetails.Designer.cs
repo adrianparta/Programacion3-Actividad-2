@@ -57,7 +57,7 @@
             this.labelID.AutoSize = true;
             this.labelID.Location = new System.Drawing.Point(30, 30);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 13);
+            this.labelID.Size = new System.Drawing.Size(19, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "Id:";
             // 
@@ -220,6 +220,7 @@
             this.buttonNextImage.TabIndex = 20;
             this.buttonNextImage.Text = "→";
             this.buttonNextImage.UseVisualStyleBackColor = true;
+            this.buttonNextImage.Click += new System.EventHandler(this.buttonNextImage_Click);
             // 
             // buttonPreviousImage
             // 

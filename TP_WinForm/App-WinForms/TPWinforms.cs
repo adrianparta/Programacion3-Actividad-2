@@ -9,6 +9,7 @@ namespace App_WinForms
     public partial class TPWinforms : Form
     {
         private List<Item> itemList;
+        private List<Image> imageList;
         public TPWinforms()
         {
             InitializeComponent();
@@ -18,12 +19,14 @@ namespace App_WinForms
         {
             ItemBusiness itemBusiness = new ItemBusiness();
             itemList = itemBusiness.List();
+            ImageBusiness imageBusiness = new ImageBusiness();
+            imageList= imageBusiness.List();
             dataGridViewItems.DataSource = itemList;
         }
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails= new ItemDetails(itemList[dataGridViewItems.SelectedCells[0].RowIndex]);
+            ItemDetails itemDetails= new ItemDetails(itemList[dataGridViewItems.SelectedCells[0].RowIndex], ref imageList);
             itemDetails.ShowDialog();
         }
 

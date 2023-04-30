@@ -13,11 +13,13 @@ namespace App_WinForms
 {
     public partial class ItemDetails : Form
     {
+        private List<string> imagesUrls = new List<string>();
+        int UrlIndex = 0;
         public ItemDetails()
         {
             InitializeComponent();
         }
-        public ItemDetails(Item item)
+        public ItemDetails(Item item, ref List<Domain.Image> imagesList)
         {
             InitializeComponent();
             this.textBoxID.Text = item.Id.ToString();
@@ -27,7 +29,18 @@ namespace App_WinForms
             this.textBoxBrand.Text = item.Brand.ToString();
             this.textBoxCategory.Text = item.Category.ToString();
             this.textBoxPrice.Text = item.Price.ToString();
-            //this.pictureBoxImages = pictureBoxImages;
+            
+            foreach (Domain.Image image in imagesList)
+            {
+                if(image.IdItem == item.Id)
+                {
+                    imagesUrls.Add(image.Url);
+                }
+            }
+            if (imagesUrls.Count > 0) {
+                this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
+            }
+            //
         }
 
         private void labelDescription_Click(object sender, EventArgs e)
@@ -38,6 +51,25 @@ namespace App_WinForms
         private void labelName_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonNextImage_Click(object sender, EventArgs e)
+        {
+            UrlIndex++;
+            if(imagesUrls.Count == UrlIndex) {
+                UrlIndex = 0;
+            }
+            this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
+        }
+
+        private void buttonPreviousImage_Click(object sender, EventArgs e)
+        {
+            UrlIndex--;
+            if (UrlIndex < 0)
+            {
+                UrlIndex = imagesUrls.Count - 1;
+            }
+            this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
         }
     }
 }

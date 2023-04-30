@@ -13,7 +13,6 @@ namespace App_WinForms
 {
     public partial class CategoryList : Form
     {
-        private CategoryBusiness categoryBusiness;
         public CategoryList()
         {
             InitializeComponent();

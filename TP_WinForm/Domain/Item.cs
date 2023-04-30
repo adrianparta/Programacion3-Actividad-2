@@ -14,7 +14,7 @@ namespace Domain
         private string code;
         private string name;
         private string description;
-        private decimal price;
+        private Money price;
 
         [DisplayName("Id")]
         public int Id { get; set; }
@@ -56,7 +56,7 @@ namespace Domain
         [DisplayName("Categoría")]
         public Category Category { get; set; }
         [DisplayName("Precio")]
-        public decimal Price
+        public Money Price
         {
             get { return price; }
             set

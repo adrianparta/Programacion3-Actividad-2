@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.cbBrand = new System.Windows.Forms.ComboBox();
             this.dgvItems = new System.Windows.Forms.DataGridView();
@@ -56,6 +57,7 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(472, 38);
             this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
@@ -76,16 +78,31 @@
             // 
             // dgvItems
             // 
+            this.dgvItems.AllowUserToAddRows = false;
             this.dgvItems.AllowUserToDeleteRows = false;
             this.dgvItems.AllowUserToOrderColumns = true;
             this.dgvItems.AllowUserToResizeRows = false;
+            this.dgvItems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Location = new System.Drawing.Point(52, 121);
+            this.dgvItems.Location = new System.Drawing.Point(52, 130);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgvItems.Name = "dgvItems";
+            this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
-            this.dgvItems.Size = new System.Drawing.Size(924, 331);
+            this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvItems.Size = new System.Drawing.Size(924, 336);
             this.dgvItems.TabIndex = 2;
             // 
             // txtNombre
@@ -99,7 +116,8 @@
             // 
             // buttonViewDetails
             // 
-            this.buttonViewDetails.Location = new System.Drawing.Point(1021, 91);
+            this.buttonViewDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonViewDetails.Location = new System.Drawing.Point(1021, 96);
             this.buttonViewDetails.Margin = new System.Windows.Forms.Padding(4);
             this.buttonViewDetails.Name = "buttonViewDetails";
             this.buttonViewDetails.Size = new System.Drawing.Size(136, 31);
@@ -110,7 +128,8 @@
             // 
             // buttonBrandWindow
             // 
-            this.buttonBrandWindow.Location = new System.Drawing.Point(52, 469);
+            this.buttonBrandWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonBrandWindow.Location = new System.Drawing.Point(52, 485);
             this.buttonBrandWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBrandWindow.Name = "buttonBrandWindow";
             this.buttonBrandWindow.Size = new System.Drawing.Size(152, 31);
@@ -121,7 +140,8 @@
             // 
             // buttonCategoryWindow
             // 
-            this.buttonCategoryWindow.Location = new System.Drawing.Point(244, 469);
+            this.buttonCategoryWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCategoryWindow.Location = new System.Drawing.Point(244, 485);
             this.buttonCategoryWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCategoryWindow.Name = "buttonCategoryWindow";
             this.buttonCategoryWindow.Size = new System.Drawing.Size(161, 31);
@@ -132,7 +152,8 @@
             // 
             // buttonDeleteItem
             // 
-            this.buttonDeleteItem.Location = new System.Drawing.Point(1021, 164);
+            this.buttonDeleteItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDeleteItem.Location = new System.Drawing.Point(1021, 169);
             this.buttonDeleteItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteItem.Name = "buttonDeleteItem";
             this.buttonDeleteItem.Size = new System.Drawing.Size(136, 31);
@@ -142,7 +163,8 @@
             // 
             // buttonAddItem
             // 
-            this.buttonAddItem.Location = new System.Drawing.Point(1021, 238);
+            this.buttonAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAddItem.Location = new System.Drawing.Point(1021, 243);
             this.buttonAddItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddItem.Name = "buttonAddItem";
             this.buttonAddItem.Size = new System.Drawing.Size(136, 31);
@@ -271,7 +293,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 524);
+            this.ClientSize = new System.Drawing.Size(1220, 529);
             this.Controls.Add(this.numPriceMax);
             this.Controls.Add(this.lblMax);
             this.Controls.Add(this.lblMin);
@@ -294,6 +316,7 @@
             this.Controls.Add(this.cbBrand);
             this.Controls.Add(this.cbCategory);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1238, 576);
             this.Name = "TPWinforms";
             this.Text = "TPWinforms";
             this.Load += new System.EventHandler(this.TPWinforms_Load);

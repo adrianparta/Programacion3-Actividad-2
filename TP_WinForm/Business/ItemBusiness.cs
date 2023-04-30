@@ -11,34 +11,46 @@ namespace Business
 {
     public class ItemBusiness
     {
-        public List<Item> list()
+        public List<Item> List()
         {
             List<Item> list = new List<Item>();
             AccessData data = new AccessData();
             try
             {
-
-                data.SetQuery("select a.Id, a.Codigo, a.Nombre, a.Descripcion, m.Descripcion as Marca, c.Descripcion as Categoria, a.Precio from articulos a, CATEGORIAS c, MARCAS m WHERE a.IdMarca = m.Id and a.IdCategoria = c.Id");
+                data.SetQuery(@"SELECT 
+                                    a.Id
+                                    , a.Codigo
+                                    , a.Nombre
+                                    , a.Descripcion
+                                    , m.Descripcion as Marca
+                                    , c.Descripcion as Categoria
+                                    , a.Precio 
+                                FROM ARTICULOS a
+                                INNER JOIN CATEGORIAS c ON  a.IdCategoria = c.Id
+                                INNER JOIN MARCAS m ON a.IdMarca = m.Id ");
                 data.ExecuteQuery();
 
                 while (data.Reader.Read())
                 {
-                    Item aux = new Item();
-                    aux.Id = (int)data.Reader["Id"];
-                    aux.Code = (string)data.Reader["Codigo"];
-                    aux.Name = (string)data.Reader["Nombre"];
-                    aux.Description = (string)data.Reader["Descripcion"];
-                    aux.Brand = new Brand();
-                    aux.Brand.Description = data.Reader["Marca"].ToString();
-                    aux.Category = new Category();
-                    aux.Category.Description = data.Reader["Categoria"].ToString();
-                    aux.Price = Convert.ToDecimal(data.Reader["Precio"]);
-
-                    list.Add(aux);
+                    Item aux = new Item
+                    {
+                        Id = (int)data.Reader["Id"],
+                        Code = (string)data.Reader["Codigo"],
+                        Name = (string)data.Reader["Nombre"],
+                        Description = (string)data.Reader["Descripcion"],
+                        Brand = new Brand
+                        {
+                            Description = data.Reader["Marca"].ToString()
+                        },
+                        Category = new Category
+                        {
+                            Description = data.Reader["Categoria"].ToString()
+                        },
+                        Price = Convert.ToDecimal(data.Reader["Precio"])
+                    };
                 }
 
-
-                return list;
+                return list;        
             }
             catch (Exception ex)
             {

@@ -23,7 +23,6 @@ namespace Data
         {
             this.connection = new SqlConnection(connectionString);
             this.command = new SqlCommand();
-
         }
 
         public void SetQuery(string query, SqlParameterCollection parameters = null)

@@ -17,7 +17,7 @@ namespace App_WinForms
         {
             List<Item> items = new List<Item>();
             ItemBusiness itemBusiness = new ItemBusiness();
-            dataGridView1.DataSource = itemBusiness.list();
+            dataGridView1.DataSource = itemBusiness.List();
 
         }
     }

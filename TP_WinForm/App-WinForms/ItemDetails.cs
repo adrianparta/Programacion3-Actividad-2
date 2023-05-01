@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Net.Configuration;
+using System.Runtime.Remoting.Proxies;
 using System.Windows.Forms;
 using Business;
 using Domain;
@@ -34,8 +37,20 @@ namespace App_WinForms
                     imagesUrls.Add(image.Url);
                 }
             }
-            if (imagesUrls.Count > 0) {
-                this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
+            if (imagesUrls.Count > 0) 
+            {
+                LoadImage(imagesUrls[UrlIndex]);
+            }
+        }
+        private void LoadImage(string url)
+        {
+            try
+            {
+                this.pictureBoxImages.Load(url);
+            }
+            catch
+            {
+                this.pictureBoxImages.Load("..\\..\\Resources\\ErrorImage.png");
             }
         }
 
@@ -55,7 +70,7 @@ namespace App_WinForms
             if(imagesUrls.Count == UrlIndex) {
                 UrlIndex = 0;
             }
-            this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
+            LoadImage(imagesUrls[UrlIndex]);
         }
 
         private void buttonPreviousImage_Click(object sender, EventArgs e)
@@ -65,7 +80,7 @@ namespace App_WinForms
             {
                 UrlIndex = imagesUrls.Count - 1;
             }
-            this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
+            LoadImage(imagesUrls[UrlIndex]);
         }
 
         private void textBoxCode_TextChanged(object sender, EventArgs e)

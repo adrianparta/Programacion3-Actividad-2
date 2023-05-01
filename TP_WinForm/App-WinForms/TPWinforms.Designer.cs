@@ -97,6 +97,7 @@
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Location = new System.Drawing.Point(52, 130);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
             this.dgvItems.RowHeadersVisible = false;

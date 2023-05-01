@@ -10,8 +10,8 @@ namespace App_WinForms
     public partial class TPWinforms : Form
     {
         private static List<Item> itemList;
-        private List<Category> categoryList;
-        private List<Brand> brandList;
+        private static List<Category> categoryList;
+        private static List<Brand> brandList;
         private const string WITHOUTFILTER = "Todas";
         private const string NotAssigned = "Sin Asignar";
 
@@ -23,22 +23,15 @@ namespace App_WinForms
         private void TPWinforms_Load(object sender, EventArgs e)
         {
             UpdateItemList();
-            categoryList = CategoryBusiness.List();
-            brandList = BrandBusiness.List();
-            dgvItems.DataSource = itemList;
-            cbCategory.Items.Add(WITHOUTFILTER);
-            cbBrand.Items.Add(WITHOUTFILTER);
-            categoryList.ForEach(x => cbCategory.Items.Add(x));
-            brandList.ForEach(x => cbBrand.Items.Add(x));
-            cbCategory.Items.Add(NotAssigned);
-            cbBrand.Items.Add(NotAssigned);
-            cbCategory.SelectedItem = cbCategory.Items[0];
-            cbBrand.SelectedItem = cbBrand.Items[0];
+            UpdateCategoryList();
+            UpdateBrandList();
+            TPWinforms_Enter(sender,  e);
+            dgvItems.Rows[0].Selected = true;
         }
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails= new ItemDetails(itemList[dgvItems.SelectedCells[0].RowIndex]);
+            ItemDetails itemDetails = new ItemDetails((Item)dgvItems.SelectedRows[0].DataBoundItem);
             itemDetails.ShowDialog();
         }
 
@@ -111,10 +104,26 @@ namespace App_WinForms
         {
             itemList = ItemBusiness.List();
         }
+        public static void UpdateCategoryList()
+        {
+            categoryList = CategoryBusiness.List();
+        }
+        public static void UpdateBrandList()
+        {
+            brandList = BrandBusiness.List();
+        }
 
         private void TPWinforms_Enter(object sender, EventArgs e)
         {
             dgvItems.DataSource = itemList;
+            cbCategory.Items.Add(WITHOUTFILTER);
+            cbBrand.Items.Add(WITHOUTFILTER);
+            categoryList.ForEach(x => cbCategory.Items.Add(x));
+            brandList.ForEach(x => cbBrand.Items.Add(x));
+            cbCategory.Items.Add(NotAssigned);
+            cbBrand.Items.Add(NotAssigned);
+            cbCategory.SelectedItem = cbCategory.Items[0];
+            cbBrand.SelectedItem = cbBrand.Items[0];
         }
     }
 }

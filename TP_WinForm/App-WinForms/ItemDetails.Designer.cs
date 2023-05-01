@@ -195,6 +195,7 @@
             // 
             // pictureBoxImages
             // 
+            this.pictureBoxImages.Image = global::App_WinForms.Properties.Resources.ErrorImage;
             this.pictureBoxImages.Location = new System.Drawing.Point(391, 234);
             this.pictureBoxImages.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxImages.Name = "pictureBoxImages";
@@ -212,7 +213,6 @@
             this.buttonSaveItem.TabIndex = 17;
             this.buttonSaveItem.Text = "Guardar";
             this.buttonSaveItem.UseVisualStyleBackColor = true;
-            this.buttonSaveItem.Click += new System.EventHandler(this.buttonSaveItem_Click);
             // 
             // buttonCancel
             // 

@@ -9,7 +9,7 @@ namespace App_WinForms
 {
     public partial class TPWinforms : Form
     {
-        private List<Item> itemList;
+        private static List<Item> itemList;
         private List<Category> categoryList;
         private List<Brand> brandList;
         private const string WITHOUTFILTER = "Todas";
@@ -22,7 +22,7 @@ namespace App_WinForms
 
         private void TPWinforms_Load(object sender, EventArgs e)
         {
-            itemList = ItemBusiness.List();
+            UpdateItemList();
             categoryList = CategoryBusiness.List();
             brandList = BrandBusiness.List();
             dgvItems.DataSource = itemList;
@@ -106,6 +106,15 @@ namespace App_WinForms
         private void numPriceMax_KeyUp(object sender, KeyEventArgs e)
         {
             FilterEvent(sender, e);
+        }
+        public static void UpdateItemList()
+        {
+            itemList = ItemBusiness.List();
+        }
+
+        private void TPWinforms_Enter(object sender, EventArgs e)
+        {
+            dgvItems.DataSource = itemList;
         }
     }
 }

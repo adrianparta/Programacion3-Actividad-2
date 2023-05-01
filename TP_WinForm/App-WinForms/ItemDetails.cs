@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Business;
 using Domain;
@@ -17,13 +11,15 @@ namespace App_WinForms
         private List<string> imagesUrls = new List<string>();
         int UrlIndex = 0;
         Item aux = new Item();
+        public delegate void UpdateItemList();
+        public UpdateItemList updateItemList;
         public ItemDetails()
         {
             InitializeComponent();
+            updateItemList += TPWinforms.UpdateItemList;
         }
-        public ItemDetails(Item item)
+        public ItemDetails(Item item) : this()
         {
-            InitializeComponent();
             this.textBoxID.Text = item.Id.ToString();
             this.textBoxCode.Text = item.Code;
             this.textBoxName.Text = item.Name;
@@ -32,7 +28,7 @@ namespace App_WinForms
             this.textBoxCategory.Text = item.Category.ToString();
             this.textBoxPrice.Text = item.Price.ToString();
             
-            foreach (Domain.Image image in item.Images)
+            foreach (Image image in item.Images)
             {
                 if(image.IdItem == item.Id)
                 {
@@ -42,7 +38,6 @@ namespace App_WinForms
             if (imagesUrls.Count > 0) {
                 this.pictureBoxImages.Load(imagesUrls[UrlIndex]);
             }
-            //
         }
 
         private void labelDescription_Click(object sender, EventArgs e)
@@ -82,26 +77,32 @@ namespace App_WinForms
         private void buttonApplyItem_Click(object sender, EventArgs e)
         {
             // No se como mostrar el Id automaticamente
-            aux.Id = ItemBusiness.List().Count +1;
+            aux.Id = ItemBusiness.List().Count + 1;
             aux.Code = textBoxCode.Text;
             aux.Name = textBoxName.Text;
             aux.Description = textBoxDescription.Text;
-            Money price = new Money(decimal.Parse(textBoxPrice.Text));
+            Money price = decimal.Parse(textBoxPrice.Text);
             aux.Price = price;
-            aux.Brand = new Brand();
-            aux.Category = new Category();
-            aux.Brand.Description = textBoxBrand.Text;
-            aux.Category.Description = textBoxCategory.Text;
-            Domain.Image img = new Domain.Image();
-            aux.Images = new List<Domain.Image>();
-            aux.Images.Add(img); 
-            // itemlist.Add(aux); No se como hacer para agregar el item, necesito que conozca a itemlist
+            aux.Brand = new Brand() 
+            {
+                Description = textBoxBrand.Text
+            };
+            aux.Category = new Category
+            {
+                Description = textBoxCategory.Text
+            };
+            aux.Images = new List<Image>
+            {
+                new Image()
+            };
         }
 
         private void buttonSaveItem_Click(object sender, EventArgs e)
-        {
-           
+        {        
             ItemBusiness.Add(aux);
+            updateItemList.Invoke();
         }
+
+
     }
 }

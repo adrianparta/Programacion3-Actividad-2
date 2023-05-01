@@ -10,7 +10,6 @@ namespace App_WinForms
     {
         private List<string> imagesUrls = new List<string>();
         int UrlIndex = 0;
-        Item aux = new Item();
         public delegate void UpdateItemList();
         public UpdateItemList updateItemList;
         public ItemDetails()
@@ -77,6 +76,7 @@ namespace App_WinForms
         private void buttonApplyItem_Click(object sender, EventArgs e)
         {
             // No se como mostrar el Id automaticamente
+            Item aux = new Item();
             aux.Id = ItemBusiness.List().Count + 1;
             aux.Code = textBoxCode.Text;
             aux.Name = textBoxName.Text;
@@ -95,14 +95,9 @@ namespace App_WinForms
             {
                 new Image()
             };
-        }
 
-        private void buttonSaveItem_Click(object sender, EventArgs e)
-        {        
             ItemBusiness.Add(aux);
             updateItemList.Invoke();
         }
-
-
     }
 }

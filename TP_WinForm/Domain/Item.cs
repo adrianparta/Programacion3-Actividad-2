@@ -65,6 +65,7 @@ namespace Domain
                 else price = -1;
             }
         }
+        public List<Image> Images { get; set; }
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain;
 using Data;
 using System.Text.RegularExpressions;
-
+using System.Data.SqlClient;
 
 namespace Business
 {
@@ -47,8 +47,10 @@ namespace Business
                         {
                             Description = data.Reader["Categoria"].ToString()
                         },
-                        Price = Convert.ToDecimal(data.Reader["Precio"])
+                        Price = Convert.ToDecimal(data.Reader["Precio"]),
+                        Images = ImageBusiness.List((int)data.Reader["Id"])
                     };
+
                     itemList.Add(itemAux);
                 }
 
@@ -57,6 +59,142 @@ namespace Business
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Add(Item item)
+        {
+            AccessData data = new AccessData();
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            try
+            {
+                string query = @"
+                    DECLARE @IdGenerado int
+
+                    INSERT INTO ARTICULOS
+                        (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio)
+                    VALUES
+                        (@Codigo,@Nombre,@Descripcion,@IdMarca,@IdCategoria,@Precio)
+
+                    SET @IdGenerado = SCOPE_IDENTITY()
+                    ";
+                parameters.Add(new SqlParameter("@Codigo",item.Code));
+                parameters.Add(new SqlParameter("@Nombre", item.Name));
+                parameters.Add(new SqlParameter("@Descripcion", item.Description));
+                parameters.Add(new SqlParameter("@IdMarca", item.Brand.Id));
+                parameters.Add(new SqlParameter("@IdCategoria", item.Category.Id));
+                parameters.Add(new SqlParameter("@Precio", item.Price));
+
+                int imagesCount = item.Images.Count;
+                if(imagesCount > 0)
+                {
+                    query += @"                    
+                        INSERT INTO IMAGENES
+                            (IdArticulo,ImagenUrl)
+                        VALUES
+                        ";
+                    for (int i = 0; i < imagesCount; i++)
+                    {
+                        query += $"(@IdGenerado, @ImagenUrl{i}) ";
+                        parameters.Add(new SqlParameter($"@ImagenUrl{i}", item.Images[i].Url));
+                    }
+                }
+
+                data.SetQuery(query, parameters);
+                
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Remove(Item item)
+        {
+            AccessData data = new AccessData();
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            try
+            {
+                string query = "DELETE FROM ARTICULOS WHERE Id = @id";
+                parameters.Add(new SqlParameter("@Id", item.Id));
+
+                if (item.Images.Count > 0)
+                {
+                    query += " DELETE FROM IMAGENES WHERE IdArticulo = @id";
+                }
+
+                data.SetQuery(query, parameters);
+
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Update(Item itemOld, Item itemUpdated)
+        {
+            if(itemOld == itemUpdated)    
+                return -1;
+            
+            AccessData data = new AccessData();
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            try
+            {
+                string query = "UPDATE ARTICULOS SET";
+                if (itemOld.Name != itemUpdated.Name)
+                {
+                    query += " Nombre = @Name,";
+                    parameters.Add(new SqlParameter("@Name", itemUpdated.Name));
+                }
+                if (itemOld.Description != itemUpdated.Description)
+                {
+                    query += " Descripcion = @Description,";
+                    parameters.Add(new SqlParameter("@Description", itemUpdated.Description));
+                }
+                if (itemOld.Code != itemUpdated.Code)
+                {
+                    query += " Codigo = @Code,";
+                    parameters.Add(new SqlParameter("@Code", itemUpdated.Code));
+                }
+                if (itemOld.Category != itemUpdated.Category)
+                {
+                    query += " IdCategoria = @Category,";
+                    parameters.Add(new SqlParameter("@Category", itemUpdated.Category.Id));
+                }
+                if (itemOld.Brand != itemUpdated.Brand)
+                {
+                    query += " IdMarca = @Brand,";
+                    parameters.Add(new SqlParameter("@Brand", itemUpdated.Brand.Id));
+                }
+                if (itemOld.Price != itemUpdated.Price)
+                {
+                    query += " Precio = @Price,";
+                    parameters.Add(new SqlParameter("@Price", itemUpdated.Price));
+                }
+
+                query = query.Remove(query.Length - 1, 1);               
+
+                query += " WHERE IdArticulo = @id";                            
+
+                data.SetQuery(query, parameters);
+
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
             finally

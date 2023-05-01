@@ -30,17 +30,17 @@ namespace Data
 
         }
 
-        public void SetQuery(string query, SqlParameterCollection parameters = null)
+        public void SetQuery(string query, List<SqlParameter> parameters = null)
         {
             this.command.CommandType = CommandType.Text;
-            this.command.CommandText = query;
             if (parameters != null)
             {
                 foreach (var parameter in parameters)
                 {
-                    this.command.Parameters.Add(parameter);
+                    command.Parameters.Add(parameter);
                 }
             }
+            this.command.CommandText = query;
         }
 
         public bool ExecuteQuery()

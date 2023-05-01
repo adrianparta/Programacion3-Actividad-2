@@ -19,7 +19,7 @@ namespace App_WinForms
         {
             InitializeComponent();
         }
-        public ItemDetails(Item item, ref List<Domain.Image> imagesList)
+        public ItemDetails(Item item)
         {
             InitializeComponent();
             this.textBoxID.Text = item.Id.ToString();
@@ -30,7 +30,7 @@ namespace App_WinForms
             this.textBoxCategory.Text = item.Category.ToString();
             this.textBoxPrice.Text = item.Price.ToString();
             
-            foreach (Domain.Image image in imagesList)
+            foreach (Domain.Image image in item.Images)
             {
                 if(image.IdItem == item.Id)
                 {

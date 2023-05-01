@@ -10,7 +10,6 @@ namespace App_WinForms
     public partial class TPWinforms : Form
     {
         private List<Item> itemList;
-        private List<Image> imageList;
         private List<Category> categoryList;
         private List<Brand> brandList;
         private const string WITHOUTFILTER = "Todas";
@@ -24,7 +23,6 @@ namespace App_WinForms
         private void TPWinforms_Load(object sender, EventArgs e)
         {
             itemList = ItemBusiness.List();
-            imageList = ImageBusiness.List();
             categoryList = CategoryBusiness.List();
             brandList = BrandBusiness.List();
             dgvItems.DataSource = itemList;
@@ -40,7 +38,7 @@ namespace App_WinForms
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails= new ItemDetails(itemList[dgvItems.SelectedCells[0].RowIndex], ref imageList);
+            ItemDetails itemDetails= new ItemDetails(itemList[dgvItems.SelectedCells[0].RowIndex]);
             itemDetails.ShowDialog();
         }
 
@@ -103,6 +101,11 @@ namespace App_WinForms
             }
 
             dgvItems.DataSource = itemFilteredList;
+        }
+
+        private void numPriceMax_KeyUp(object sender, KeyEventArgs e)
+        {
+            FilterEvent(sender, e);
         }
     }
 }

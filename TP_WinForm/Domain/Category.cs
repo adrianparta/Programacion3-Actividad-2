@@ -27,5 +27,13 @@ namespace Domain
         {
             return Description;
         }
+        public static bool operator ==(Category left, Category right)
+        {
+            return left.Id == right.Id;
+        }
+        public static bool operator !=(Category left, Category right)
+        {
+            return !(left == right);
+        }
     }
 }

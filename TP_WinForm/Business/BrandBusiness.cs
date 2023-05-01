@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,76 @@ namespace Business
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Add(Brand brand)
+        {
+            AccessData data = new AccessData();
+            try
+            {
+                string query = "INSERT INTO MARCAS (Descripcion) VALUES (@Description)";
+                List<SqlParameter> parameters = new List<SqlParameter>() {
+                    new SqlParameter("@Description", brand.Description)
+                };
+                data.SetQuery(query, parameters);
+
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return -1;
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Remove(Brand brand)
+        {
+            AccessData data = new AccessData();
+            try
+            {
+                string query = "DELETE FROM MARCAS WHERE id = @Id";
+                List<SqlParameter> parameters = new List<SqlParameter>() {
+                    new SqlParameter("@Id", brand.Id)
+                };
+                data.SetQuery(query, parameters);
+
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return -1;
+                throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int Update(Brand brand)
+        {
+            AccessData data = new AccessData();
+            try
+            {
+                string query = "UPDATE MARCAS SET Descripcion = @Description WHERE id = @Id";
+                List<SqlParameter> parameters = new List<SqlParameter>() {
+                    new SqlParameter("@Description", brand.Description),
+                    new SqlParameter("@Id", brand.Id)
+                };
+                data.SetQuery(query, parameters);
+
+                return data.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                return -1;
                 throw ex;
             }
             finally

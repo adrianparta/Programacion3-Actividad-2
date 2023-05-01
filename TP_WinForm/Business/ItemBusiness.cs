@@ -23,7 +23,9 @@ namespace Business
                                     , a.Codigo
                                     , a.Nombre
                                     , a.Descripcion
+                                    , ISNULL(m.Id,-1) as MarcaId
                                     , ISNULL(m.Descripcion,'Sin Asignar') as Marca
+                                    , ISNULL(c.Id,-1) as CategoriaId
                                     , ISNULL(c.Descripcion,'Sin Asignar') as Categoria
                                     , a.Precio 
                                 FROM ARTICULOS a
@@ -36,15 +38,17 @@ namespace Business
                     Item itemAux = new Item
                     {
                         Id = (int)data.Reader["Id"],
-                        Code = (string)data.Reader["Codigo"],
-                        Name = (string)data.Reader["Nombre"],
+                        Code = data.Reader["Codigo"].ToString(),
+                        Name = data.Reader["Nombre"].ToString(),
                         Description = (string)data.Reader["Descripcion"],
                         Brand = new Brand
                         {
+                            Id = (int)data.Reader["MarcaId"],
                             Description = data.Reader["Marca"].ToString()
                         },
                         Category = new Category
                         {
+                            Id = (int)data.Reader["CategoriaId"],
                             Description = data.Reader["Categoria"].ToString()
                         },
                         Price = Convert.ToDecimal(data.Reader["Precio"]),
@@ -78,16 +82,16 @@ namespace Business
                     INSERT INTO ARTICULOS
                         (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio)
                     VALUES
-                        (@Codigo,@Nombre,@Descripcion,@IdMarca,@IdCategoria,@Precio)
+                        (@Code,@Name,@Description,@BrandId,@CategoryId,@Price)
 
                     SET @IdGenerado = SCOPE_IDENTITY()
                     ";
-                parameters.Add(new SqlParameter("@Codigo",item.Code));
-                parameters.Add(new SqlParameter("@Nombre", item.Name));
-                parameters.Add(new SqlParameter("@Descripcion", item.Description));
-                parameters.Add(new SqlParameter("@IdMarca", item.Brand.Id));
-                parameters.Add(new SqlParameter("@IdCategoria", item.Category.Id));
-                parameters.Add(new SqlParameter("@Precio", item.Price));
+                parameters.Add(new SqlParameter("@Code",item.Code));
+                parameters.Add(new SqlParameter("@Name", item.Name));
+                parameters.Add(new SqlParameter("@Description", item.Description));
+                parameters.Add(new SqlParameter("@BrandId", item.Brand.Id));
+                parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
+                parameters.Add(new SqlParameter("@Price", item.Price));
 
                 int imagesCount = item.Images.Count;
                 if(imagesCount > 0)
@@ -95,13 +99,14 @@ namespace Business
                     query += @"                    
                         INSERT INTO IMAGENES
                             (IdArticulo,ImagenUrl)
-                        VALUES
+                        VALUES 
                         ";
                     for (int i = 0; i < imagesCount; i++)
                     {
-                        query += $"(@IdGenerado, @ImagenUrl{i}) ";
+                        query += $" (@IdGenerado, @ImagenUrl{i}),";
                         parameters.Add(new SqlParameter($"@ImagenUrl{i}", item.Images[i].Url));
                     }
+                    query = query.Remove(query.Length - 1);                  
                 }
 
                 data.SetQuery(query, parameters);
@@ -123,12 +128,12 @@ namespace Business
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
-                string query = "DELETE FROM ARTICULOS WHERE Id = @id";
+                string query = "DELETE FROM ARTICULOS WHERE Id = @Id";
                 parameters.Add(new SqlParameter("@Id", item.Id));
 
                 if (item.Images.Count > 0)
                 {
-                    query += " DELETE FROM IMAGENES WHERE IdArticulo = @id";
+                    query += " DELETE FROM IMAGENES WHERE IdArticulo = @Id";
                 }
 
                 data.SetQuery(query, parameters);
@@ -144,50 +149,56 @@ namespace Business
                 data.Close();
             }
         }
-        public static int Update(Item itemOld, Item itemUpdated)
-        {
-            if(itemOld == itemUpdated)    
-                return -1;
-            
+        public static int Update(Item oldItem, Item updatedItem)
+        {          
             AccessData data = new AccessData();
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
-                string query = "UPDATE ARTICULOS SET";
-                if (itemOld.Name != itemUpdated.Name)
+                string query = "UPDATE ARTICULOS SET ";
+                if (oldItem.Name != updatedItem.Name)
                 {
                     query += " Nombre = @Name,";
-                    parameters.Add(new SqlParameter("@Name", itemUpdated.Name));
+                    parameters.Add(new SqlParameter("@Name", updatedItem.Name));
                 }
-                if (itemOld.Description != itemUpdated.Description)
+                if (oldItem.Description != updatedItem.Description)
                 {
                     query += " Descripcion = @Description,";
-                    parameters.Add(new SqlParameter("@Description", itemUpdated.Description));
+                    parameters.Add(new SqlParameter("@Description", updatedItem.Description));
                 }
-                if (itemOld.Code != itemUpdated.Code)
+                if (oldItem.Code != updatedItem.Code)
                 {
                     query += " Codigo = @Code,";
-                    parameters.Add(new SqlParameter("@Code", itemUpdated.Code));
+                    parameters.Add(new SqlParameter("@Code", updatedItem.Code));
                 }
-                if (itemOld.Category != itemUpdated.Category)
+                if (oldItem.Category != updatedItem.Category)
                 {
                     query += " IdCategoria = @Category,";
-                    parameters.Add(new SqlParameter("@Category", itemUpdated.Category.Id));
+                    parameters.Add(new SqlParameter("@Category", updatedItem.Category.Id));
                 }
-                if (itemOld.Brand != itemUpdated.Brand)
+                if (oldItem.Brand != updatedItem.Brand)
                 {
                     query += " IdMarca = @Brand,";
-                    parameters.Add(new SqlParameter("@Brand", itemUpdated.Brand.Id));
+                    parameters.Add(new SqlParameter("@Brand", updatedItem.Brand.Id));
                 }
-                if (itemOld.Price != itemUpdated.Price)
+                if (oldItem.Price != updatedItem.Price)
                 {
                     query += " Precio = @Price,";
-                    parameters.Add(new SqlParameter("@Price", itemUpdated.Price));
+                    parameters.Add(new SqlParameter("@Price", updatedItem.Price));
                 }
 
-                query = query.Remove(query.Length - 1, 1);               
+                ImageBusiness.UpdateList(oldItem.Images, updatedItem.Images);
 
-                query += " WHERE IdArticulo = @id";                            
+                if (query[query.Length - 1] == ',')
+                {
+                    query = query.Remove(query.Length - 1, 1);               
+                }
+                else
+                {
+                    return -1;
+                }
+
+                query += " WHERE IdArticulo = @Id";                            
 
                 data.SetQuery(query, parameters);
 
@@ -195,6 +206,7 @@ namespace Business
             }
             catch (Exception ex)
             {
+                return -1;
                 throw ex;
             }
             finally

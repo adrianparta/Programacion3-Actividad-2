@@ -140,5 +140,15 @@ namespace App_WinForms
         {
 
         }
+
+        private void NumbersOnly(object sender, KeyPressEventArgs e)
+        {
+            // Evita que se ingresen letras en el text box
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+        
     }
 }

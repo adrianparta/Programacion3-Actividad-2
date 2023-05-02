@@ -40,8 +40,6 @@
             this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
-            this.textBoxBrand = new System.Windows.Forms.TextBox();
-            this.textBoxCategory = new System.Windows.Forms.TextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.pictureBoxImages = new System.Windows.Forms.PictureBox();
             this.buttonSaveItem = new System.Windows.Forms.Button();
@@ -49,26 +47,26 @@
             this.buttonApplyItem = new System.Windows.Forms.Button();
             this.buttonNextImage = new System.Windows.Forms.Button();
             this.buttonPreviousImage = new System.Windows.Forms.Button();
+            this.cbBrands = new System.Windows.Forms.ComboBox();
+            this.cbCategories = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).BeginInit();
             this.SuspendLayout();
             // 
             // labelID
             // 
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(40, 37);
-            this.labelID.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelID.Location = new System.Drawing.Point(30, 30);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(21, 16);
+            this.labelID.Size = new System.Drawing.Size(19, 13);
             this.labelID.TabIndex = 0;
             this.labelID.Text = "Id:";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(40, 135);
-            this.labelName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelName.Location = new System.Drawing.Point(30, 110);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(59, 16);
+            this.labelName.Size = new System.Drawing.Size(47, 13);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre:";
             this.labelName.Click += new System.EventHandler(this.labelName_Click);
@@ -76,10 +74,9 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(40, 185);
-            this.labelDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelDescription.Location = new System.Drawing.Point(30, 150);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(82, 16);
+            this.labelDescription.Size = new System.Drawing.Size(66, 13);
             this.labelDescription.TabIndex = 2;
             this.labelDescription.Text = "Descripción:";
             this.labelDescription.Click += new System.EventHandler(this.labelDescription_Click);
@@ -87,149 +84,121 @@
             // labelCode
             // 
             this.labelCode.AutoSize = true;
-            this.labelCode.Location = new System.Drawing.Point(40, 86);
-            this.labelCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCode.Location = new System.Drawing.Point(30, 70);
             this.labelCode.Name = "labelCode";
-            this.labelCode.Size = new System.Drawing.Size(54, 16);
+            this.labelCode.Size = new System.Drawing.Size(43, 13);
             this.labelCode.TabIndex = 3;
             this.labelCode.Text = "Código:";
             // 
             // labelBrand
             // 
             this.labelBrand.AutoSize = true;
-            this.labelBrand.Location = new System.Drawing.Point(387, 37);
-            this.labelBrand.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelBrand.Location = new System.Drawing.Point(290, 30);
             this.labelBrand.Name = "labelBrand";
-            this.labelBrand.Size = new System.Drawing.Size(48, 16);
+            this.labelBrand.Size = new System.Drawing.Size(40, 13);
             this.labelBrand.TabIndex = 4;
             this.labelBrand.Text = "Marca:";
             // 
             // labelCategory
             // 
             this.labelCategory.AutoSize = true;
-            this.labelCategory.Location = new System.Drawing.Point(387, 86);
-            this.labelCategory.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelCategory.Location = new System.Drawing.Point(290, 70);
             this.labelCategory.Name = "labelCategory";
-            this.labelCategory.Size = new System.Drawing.Size(69, 16);
+            this.labelCategory.Size = new System.Drawing.Size(57, 13);
             this.labelCategory.TabIndex = 5;
             this.labelCategory.Text = "Categoría:";
             // 
             // labelPrice
             // 
             this.labelPrice.AutoSize = true;
-            this.labelPrice.Location = new System.Drawing.Point(387, 135);
-            this.labelPrice.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPrice.Location = new System.Drawing.Point(290, 110);
             this.labelPrice.Name = "labelPrice";
-            this.labelPrice.Size = new System.Drawing.Size(49, 16);
+            this.labelPrice.Size = new System.Drawing.Size(40, 13);
             this.labelPrice.TabIndex = 6;
             this.labelPrice.Text = "Precio:";
             // 
             // labelImages
             // 
             this.labelImages.AutoSize = true;
-            this.labelImages.Location = new System.Drawing.Point(387, 185);
-            this.labelImages.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelImages.Location = new System.Drawing.Point(290, 150);
             this.labelImages.Name = "labelImages";
-            this.labelImages.Size = new System.Drawing.Size(70, 16);
+            this.labelImages.Size = new System.Drawing.Size(56, 13);
             this.labelImages.TabIndex = 7;
             this.labelImages.Text = "Imágenes:";
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(133, 86);
-            this.textBoxCode.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxCode.Location = new System.Drawing.Point(100, 70);
             this.textBoxCode.Name = "textBoxCode";
-            this.textBoxCode.Size = new System.Drawing.Size(229, 22);
+            this.textBoxCode.Size = new System.Drawing.Size(173, 20);
             this.textBoxCode.TabIndex = 8;
             this.textBoxCode.TextChanged += new System.EventHandler(this.textBoxCode_TextChanged);
             // 
             // textBoxID
             // 
-            this.textBoxID.Location = new System.Drawing.Point(133, 37);
-            this.textBoxID.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxID.Location = new System.Drawing.Point(100, 30);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(72, 22);
+            this.textBoxID.Size = new System.Drawing.Size(55, 13);
             this.textBoxID.TabIndex = 9;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(133, 135);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxName.Location = new System.Drawing.Point(100, 110);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(229, 22);
+            this.textBoxName.Size = new System.Drawing.Size(173, 20);
             this.textBoxName.TabIndex = 10;
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(40, 234);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxDescription.Location = new System.Drawing.Point(30, 190);
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(323, 122);
+            this.textBoxDescription.Size = new System.Drawing.Size(243, 100);
             this.textBoxDescription.TabIndex = 12;
             this.textBoxDescription.Text = "";
             // 
-            // textBoxBrand
-            // 
-            this.textBoxBrand.Location = new System.Drawing.Point(471, 37);
-            this.textBoxBrand.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxBrand.Name = "textBoxBrand";
-            this.textBoxBrand.Size = new System.Drawing.Size(229, 22);
-            this.textBoxBrand.TabIndex = 13;
-            // 
-            // textBoxCategory
-            // 
-            this.textBoxCategory.Location = new System.Drawing.Point(471, 86);
-            this.textBoxCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxCategory.Name = "textBoxCategory";
-            this.textBoxCategory.Size = new System.Drawing.Size(229, 22);
-            this.textBoxCategory.TabIndex = 14;
-            // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(471, 135);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPrice.Location = new System.Drawing.Point(353, 110);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(229, 22);
+            this.textBoxPrice.Size = new System.Drawing.Size(173, 20);
             this.textBoxPrice.TabIndex = 15;
             // 
             // pictureBoxImages
             // 
             this.pictureBoxImages.Image = global::App_WinForms.Properties.Resources.ErrorImage;
-            this.pictureBoxImages.Location = new System.Drawing.Point(391, 234);
-            this.pictureBoxImages.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxImages.Location = new System.Drawing.Point(293, 190);
             this.pictureBoxImages.Name = "pictureBoxImages";
-            this.pictureBoxImages.Size = new System.Drawing.Size(311, 123);
+            this.pictureBoxImages.Size = new System.Drawing.Size(233, 100);
             this.pictureBoxImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxImages.TabIndex = 16;
             this.pictureBoxImages.TabStop = false;
             // 
             // buttonSaveItem
             // 
-            this.buttonSaveItem.Location = new System.Drawing.Point(493, 375);
-            this.buttonSaveItem.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonSaveItem.Location = new System.Drawing.Point(370, 305);
             this.buttonSaveItem.Name = "buttonSaveItem";
-            this.buttonSaveItem.Size = new System.Drawing.Size(100, 28);
+            this.buttonSaveItem.Size = new System.Drawing.Size(75, 23);
             this.buttonSaveItem.TabIndex = 17;
             this.buttonSaveItem.Text = "Guardar";
             this.buttonSaveItem.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(601, 375);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCancel.Location = new System.Drawing.Point(451, 305);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(100, 28);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 18;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonApplyItem
             // 
-            this.buttonApplyItem.Location = new System.Drawing.Point(385, 375);
-            this.buttonApplyItem.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonApplyItem.Location = new System.Drawing.Point(289, 305);
             this.buttonApplyItem.Name = "buttonApplyItem";
-            this.buttonApplyItem.Size = new System.Drawing.Size(100, 28);
+            this.buttonApplyItem.Size = new System.Drawing.Size(75, 23);
             this.buttonApplyItem.TabIndex = 19;
             this.buttonApplyItem.Text = "Aplicar";
             this.buttonApplyItem.UseVisualStyleBackColor = true;
@@ -237,10 +206,9 @@
             // 
             // buttonNextImage
             // 
-            this.buttonNextImage.Location = new System.Drawing.Point(709, 234);
-            this.buttonNextImage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonNextImage.Location = new System.Drawing.Point(532, 190);
             this.buttonNextImage.Name = "buttonNextImage";
-            this.buttonNextImage.Size = new System.Drawing.Size(36, 28);
+            this.buttonNextImage.Size = new System.Drawing.Size(27, 23);
             this.buttonNextImage.TabIndex = 20;
             this.buttonNextImage.Text = "→";
             this.buttonNextImage.UseVisualStyleBackColor = true;
@@ -248,20 +216,39 @@
             // 
             // buttonPreviousImage
             // 
-            this.buttonPreviousImage.Location = new System.Drawing.Point(709, 270);
-            this.buttonPreviousImage.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonPreviousImage.Location = new System.Drawing.Point(532, 219);
             this.buttonPreviousImage.Name = "buttonPreviousImage";
-            this.buttonPreviousImage.Size = new System.Drawing.Size(36, 28);
+            this.buttonPreviousImage.Size = new System.Drawing.Size(27, 23);
             this.buttonPreviousImage.TabIndex = 21;
             this.buttonPreviousImage.Text = "←";
             this.buttonPreviousImage.UseVisualStyleBackColor = true;
             this.buttonPreviousImage.Click += new System.EventHandler(this.buttonPreviousImage_Click);
             // 
+            // cbBrands
+            // 
+            this.cbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBrands.FormattingEnabled = true;
+            this.cbBrands.Location = new System.Drawing.Point(353, 27);
+            this.cbBrands.Name = "cbBrands";
+            this.cbBrands.Size = new System.Drawing.Size(173, 21);
+            this.cbBrands.TabIndex = 22;
+            // 
+            // cbCategories
+            // 
+            this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategories.FormattingEnabled = true;
+            this.cbCategories.Location = new System.Drawing.Point(353, 67);
+            this.cbCategories.Name = "cbCategories";
+            this.cbCategories.Size = new System.Drawing.Size(173, 21);
+            this.cbCategories.TabIndex = 23;
+            // 
             // ItemDetails
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 446);
+            this.ClientSize = new System.Drawing.Size(590, 362);
+            this.Controls.Add(this.cbCategories);
+            this.Controls.Add(this.cbBrands);
             this.Controls.Add(this.buttonPreviousImage);
             this.Controls.Add(this.buttonNextImage);
             this.Controls.Add(this.buttonApplyItem);
@@ -269,8 +256,6 @@
             this.Controls.Add(this.buttonSaveItem);
             this.Controls.Add(this.pictureBoxImages);
             this.Controls.Add(this.textBoxPrice);
-            this.Controls.Add(this.textBoxCategory);
-            this.Controls.Add(this.textBoxBrand);
             this.Controls.Add(this.textBoxDescription);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxID);
@@ -283,7 +268,6 @@
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelID);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ItemDetails";
             this.Text = "Detalles del producto";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).EndInit();
@@ -306,8 +290,6 @@
         private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.RichTextBox textBoxDescription;
-        private System.Windows.Forms.TextBox textBoxBrand;
-        private System.Windows.Forms.TextBox textBoxCategory;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.PictureBox pictureBoxImages;
         private System.Windows.Forms.Button buttonSaveItem;
@@ -315,5 +297,7 @@
         private System.Windows.Forms.Button buttonApplyItem;
         private System.Windows.Forms.Button buttonNextImage;
         private System.Windows.Forms.Button buttonPreviousImage;
+        private System.Windows.Forms.ComboBox cbBrands;
+        private System.Windows.Forms.ComboBox cbCategories;
     }
 }

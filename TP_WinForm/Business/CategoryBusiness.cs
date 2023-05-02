@@ -112,5 +112,24 @@ namespace Business
                 data.Close();
             }
         }
+        public static int GetMaxID()
+        {
+            AccessData data = new AccessData();
+            try
+            {
+                data.SetQuery(@"SELECT MAX(Id) FROM CATEGORIAS");
+                data.ExecuteQuery();
+                data.Reader.Read();
+                return (int)data.Reader.GetInt32(0);
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
     }
 }

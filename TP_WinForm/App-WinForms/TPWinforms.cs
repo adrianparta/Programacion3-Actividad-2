@@ -22,6 +22,8 @@ namespace App_WinForms
 
         private void TPWinforms_Load(object sender, EventArgs e)
         {
+            categoryList = CategoryBusiness.List();
+            brandList = BrandBusiness.List();
             UpdateItemList();
             UpdateCategoryList();
             UpdateBrandList();
@@ -29,13 +31,13 @@ namespace App_WinForms
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails = new ItemDetails((Item)dgvItems.SelectedRows[0].DataBoundItem);
+            ItemDetails itemDetails = new ItemDetails(categoryList, brandList, (Item)dgvItems.SelectedRows[0].DataBoundItem);
             itemDetails.ShowDialog();
         }
 
         private void buttonAddItem_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails = new ItemDetails();
+            ItemDetails itemDetails = new ItemDetails(categoryList, brandList);
             itemDetails.ShowDialog();
         }
 

@@ -72,6 +72,7 @@ namespace Business
         }
         public static int Add(Item item)
         {
+            decimal temporalPrice = 10;
             AccessData data = new AccessData();
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
@@ -91,7 +92,7 @@ namespace Business
                 parameters.Add(new SqlParameter("@Description", item.Description));
                 parameters.Add(new SqlParameter("@BrandId", item.Brand.Id));
                 parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
-                parameters.Add(new SqlParameter("@Price", item.Price));
+                parameters.Add(new SqlParameter("@Price", temporalPrice));
 
                 int imagesCount = item.Images.Count;
                 if(imagesCount > 0)
@@ -208,6 +209,25 @@ namespace Business
             {
                 return -1;
                 throw ex;
+            }
+            finally
+            {
+                data.Close();
+            }
+        }
+        public static int GetMaxID()
+        {
+            AccessData data = new AccessData();
+            try
+            {
+                data.SetQuery(@"SELECT MAX(Id) FROM ARTICULOS");
+                data.ExecuteQuery();
+                data.Reader.Read();
+                return (int)data.Reader.GetInt32(0);
+            }
+            catch (Exception)
+            {
+                return -1;
             }
             finally
             {

@@ -52,5 +52,10 @@ namespace App_WinForms
                 txtCaregoryDescription.Text = categorySelected.Description;
             }
         }
+
+        private void buttonUpdateCategory_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

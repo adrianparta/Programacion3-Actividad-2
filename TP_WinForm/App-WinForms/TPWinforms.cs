@@ -25,8 +25,6 @@ namespace App_WinForms
             UpdateItemList();
             UpdateCategoryList();
             UpdateBrandList();
-            TPWinforms_Enter(sender,  e);
-            dgvItems.Rows[0].Selected = true;
         }
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
@@ -112,8 +110,7 @@ namespace App_WinForms
         {
             brandList = BrandBusiness.List();
         }
-
-        private void TPWinforms_Enter(object sender, EventArgs e)
+        private void TPWinforms_Activated(object sender, EventArgs e)
         {
             dgvItems.DataSource = itemList;
             cbCategory.Items.Add(WITHOUTFILTER);

@@ -94,7 +94,7 @@ namespace Business
                 parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
                 parameters.Add(new SqlParameter("@Price", temporalPrice));
 
-                int imagesCount = item.Images.Count;
+                int imagesCount = item.Images is null ? 0 : item.Images.Count;
                 if(imagesCount > 0)
                 {
                     query += @"                    

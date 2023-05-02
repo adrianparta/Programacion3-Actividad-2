@@ -56,8 +56,8 @@ namespace App_WinForms
             if (item != null)
             {
                 cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
-                updateItemList += TPWinforms.UpdateItemList;
             }
+                updateItemList += TPWinforms.UpdateItemList;
         }
         private void LoadImage(string url)
         {

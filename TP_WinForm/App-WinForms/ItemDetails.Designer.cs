@@ -137,7 +137,7 @@
             // textBoxCode
             // 
             this.textBoxCode.Location = new System.Drawing.Point(133, 86);
-            this.textBoxCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxCode.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(229, 22);
             this.textBoxCode.TabIndex = 8;
@@ -147,7 +147,7 @@
             // 
             this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxID.Location = new System.Drawing.Point(133, 37);
-            this.textBoxID.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxID.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
             this.textBoxID.Size = new System.Drawing.Size(73, 15);
@@ -156,7 +156,7 @@
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(133, 135);
-            this.textBoxName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(229, 22);
             this.textBoxName.TabIndex = 10;
@@ -164,7 +164,7 @@
             // textBoxDescription
             // 
             this.textBoxDescription.Location = new System.Drawing.Point(40, 234);
-            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(323, 122);
             this.textBoxDescription.TabIndex = 12;
@@ -173,16 +173,17 @@
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(471, 135);
-            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPrice.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(229, 22);
             this.textBoxPrice.TabIndex = 15;
+            this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
             // 
             // pictureBoxImages
             // 
             this.pictureBoxImages.Image = global::App_WinForms.Properties.Resources.ErrorImage;
             this.pictureBoxImages.Location = new System.Drawing.Point(391, 234);
-            this.pictureBoxImages.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBoxImages.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBoxImages.Name = "pictureBoxImages";
             this.pictureBoxImages.Size = new System.Drawing.Size(311, 123);
             this.pictureBoxImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -192,7 +193,7 @@
             // buttonSaveItem
             // 
             this.buttonSaveItem.Location = new System.Drawing.Point(493, 375);
-            this.buttonSaveItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSaveItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonSaveItem.Name = "buttonSaveItem";
             this.buttonSaveItem.Size = new System.Drawing.Size(100, 28);
             this.buttonSaveItem.TabIndex = 17;
@@ -203,7 +204,7 @@
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(601, 375);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(100, 28);
             this.buttonCancel.TabIndex = 18;
@@ -214,7 +215,7 @@
             // buttonApplyItem
             // 
             this.buttonApplyItem.Location = new System.Drawing.Point(385, 375);
-            this.buttonApplyItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonApplyItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonApplyItem.Name = "buttonApplyItem";
             this.buttonApplyItem.Size = new System.Drawing.Size(100, 28);
             this.buttonApplyItem.TabIndex = 19;
@@ -225,7 +226,7 @@
             // buttonNextImage
             // 
             this.buttonNextImage.Location = new System.Drawing.Point(709, 234);
-            this.buttonNextImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonNextImage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonNextImage.Name = "buttonNextImage";
             this.buttonNextImage.Size = new System.Drawing.Size(36, 28);
             this.buttonNextImage.TabIndex = 20;
@@ -236,7 +237,7 @@
             // buttonPreviousImage
             // 
             this.buttonPreviousImage.Location = new System.Drawing.Point(709, 270);
-            this.buttonPreviousImage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonPreviousImage.Margin = new System.Windows.Forms.Padding(4);
             this.buttonPreviousImage.Name = "buttonPreviousImage";
             this.buttonPreviousImage.Size = new System.Drawing.Size(36, 28);
             this.buttonPreviousImage.TabIndex = 21;
@@ -249,7 +250,7 @@
             this.cbBrands.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBrands.FormattingEnabled = true;
             this.cbBrands.Location = new System.Drawing.Point(471, 33);
-            this.cbBrands.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBrands.Margin = new System.Windows.Forms.Padding(4);
             this.cbBrands.Name = "cbBrands";
             this.cbBrands.Size = new System.Drawing.Size(229, 24);
             this.cbBrands.TabIndex = 22;
@@ -259,7 +260,7 @@
             this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategories.FormattingEnabled = true;
             this.cbCategories.Location = new System.Drawing.Point(471, 82);
-            this.cbCategories.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCategories.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategories.Name = "cbCategories";
             this.cbCategories.Size = new System.Drawing.Size(229, 24);
             this.cbCategories.TabIndex = 23;
@@ -290,7 +291,7 @@
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelID);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ItemDetails";
             this.Text = "Detalles del producto";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).EndInit();

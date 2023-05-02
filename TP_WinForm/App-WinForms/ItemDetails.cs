@@ -45,13 +45,19 @@ namespace App_WinForms
             {
                 cbCategories.Items.Add(category.Description);
             }
-            cbCategories.SelectedIndex = cbCategories.FindStringExact(item.Category.ToString());
-            foreach (var brand in this.brands)
+            if (item != null)
             {
-                cbBrands.Items.Add(brand.Description);
+                cbCategories.SelectedIndex = cbCategories.FindStringExact(item.Category.ToString());
             }
-            cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
-            updateItemList += TPWinforms.UpdateItemList;
+                foreach (var brand in this.brands)
+                {
+                    cbBrands.Items.Add(brand.Description);
+                }
+            if (item != null)
+            {
+                cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
+                updateItemList += TPWinforms.UpdateItemList;
+            }
         }
         private void LoadImage(string url)
         {
@@ -126,6 +132,11 @@ namespace App_WinForms
         }
 
         private void textBoxBrand_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonSaveItem_Click(object sender, EventArgs e)
         {
 
         }

@@ -49,6 +49,10 @@ namespace App_WinForms
             {
                 cbCategories.SelectedIndex = cbCategories.FindStringExact(item.Category.ToString());
             }
+            else
+            {
+                cbCategories.SelectedIndex = 0;
+            }
                 foreach (var brand in this.brands)
                 {
                     cbBrands.Items.Add(brand.Description);
@@ -56,6 +60,10 @@ namespace App_WinForms
             if (item != null)
             {
                 cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
+            }
+            else
+            {
+                cbBrands.SelectedIndex = 0;
             }
                 updateItemList += TPWinforms.UpdateItemList;
         }
@@ -149,6 +157,6 @@ namespace App_WinForms
                 e.Handled = true;
             }
         }
-        
+
     }
 }

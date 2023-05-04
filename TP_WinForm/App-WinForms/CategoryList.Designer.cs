@@ -76,7 +76,7 @@
             // 
             this.buttonDeleteCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteCategory.Location = new System.Drawing.Point(450, 106);
-            this.buttonDeleteCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonDeleteCategory.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDeleteCategory.Name = "buttonDeleteCategory";
             this.buttonDeleteCategory.Size = new System.Drawing.Size(75, 22);
             this.buttonDeleteCategory.TabIndex = 2;
@@ -87,7 +87,7 @@
             // 
             this.buttonUpdateCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonUpdateCategory.Location = new System.Drawing.Point(450, 288);
-            this.buttonUpdateCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonUpdateCategory.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUpdateCategory.Name = "buttonUpdateCategory";
             this.buttonUpdateCategory.Size = new System.Drawing.Size(75, 22);
             this.buttonUpdateCategory.TabIndex = 3;
@@ -124,7 +124,7 @@
             this.txtCategoryId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCategoryId.Enabled = false;
             this.txtCategoryId.Location = new System.Drawing.Point(76, 294);
-            this.txtCategoryId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCategoryId.Margin = new System.Windows.Forms.Padding(2);
             this.txtCategoryId.Name = "txtCategoryId";
             this.txtCategoryId.Size = new System.Drawing.Size(50, 20);
             this.txtCategoryId.TabIndex = 6;
@@ -133,7 +133,8 @@
             // 
             this.txtCaregoryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCaregoryDescription.Location = new System.Drawing.Point(215, 292);
-            this.txtCaregoryDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCaregoryDescription.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCaregoryDescription.MaxLength = 50;
             this.txtCaregoryDescription.Name = "txtCaregoryDescription";
             this.txtCaregoryDescription.Size = new System.Drawing.Size(198, 20);
             this.txtCaregoryDescription.TabIndex = 7;

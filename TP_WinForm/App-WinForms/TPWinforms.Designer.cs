@@ -106,6 +106,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(171, 32);
+            this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(145, 20);
             this.txtNombre.TabIndex = 3;
@@ -218,6 +219,7 @@
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(46, 31);
+            this.txtCode.MaxLength = 50;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(92, 20);
             this.txtCode.TabIndex = 15;
@@ -226,6 +228,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(46, 74);
+            this.txtDescription.MaxLength = 50;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(270, 20);
             this.txtDescription.TabIndex = 16;
@@ -234,7 +237,7 @@
             // numPriceMin
             // 
             this.numPriceMin.Location = new System.Drawing.Point(380, 76);
-            this.numPriceMin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPriceMin.Margin = new System.Windows.Forms.Padding(2);
             this.numPriceMin.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -278,7 +281,7 @@
             // numPriceMax
             // 
             this.numPriceMax.Location = new System.Drawing.Point(531, 76);
-            this.numPriceMax.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numPriceMax.Margin = new System.Windows.Forms.Padding(2);
             this.numPriceMax.Maximum = new decimal(new int[] {
             9999999,
             0,

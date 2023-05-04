@@ -20,14 +20,14 @@ namespace Business
             {
                 data.SetQuery(@"SELECT 
                                     a.Id
-                                    , a.Codigo
-                                    , a.Nombre
-                                    , a.Descripcion
+                                    , ISNULL(a.Codigo, 'Sin Asignar') as Codigo
+                                    , ISNULL(a.Nombre, 'Sin Asignar') as Nombre
+                                    , ISNULL(a.Descripcion, 'Sin Asignar') as Descripcion
                                     , ISNULL(m.Id,-1) as MarcaId
                                     , ISNULL(m.Descripcion,'Sin Asignar') as Marca
                                     , ISNULL(c.Id,-1) as CategoriaId
                                     , ISNULL(c.Descripcion,'Sin Asignar') as Categoria
-                                    , a.Precio 
+                                    , ISNULL(a.Precio, 0) as Precio
                                 FROM ARTICULOS a
                                 LEFT JOIN CATEGORIAS c ON a.IdCategoria = c.Id
                                 LEFT JOIN MARCAS m ON a.IdMarca = m.Id ");
@@ -77,22 +77,47 @@ namespace Business
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
-                string query = @"
+                string code, name, description, price, values;
+                code = name = description = price = values = "";
+                if (item.Code != null && item.Code != "")
+                {
+                    code = "Codigo,";
+                    values += $"@{code}";
+                    parameters.Add(new SqlParameter("@Codigo", item.Code));
+                }
+                if (item.Name != null && item.Name != "")
+                {
+                    name = "Nombre,";
+                    values += $"@{name}";
+                    parameters.Add(new SqlParameter("@Nombre", item.Name));
+                }
+                if (item.Description != null && item.Description != "")
+                {
+                    description = "Descripcion,";
+                    values += $"@{description}";
+                    parameters.Add(new SqlParameter("@Descripcion", item.Description));
+                }
+                if(!(item.Price is null))
+                {
+                    price = "Precio,";
+                    values += $"@{price}";
+                    parameters.Add(new SqlParameter("@Precio", temporalPrice));
+                }
+                string query = $@"
                     DECLARE @IdGenerado int
 
-                    INSERT INTO ARTICULOS
-                        (Codigo,Nombre,Descripcion,IdMarca,IdCategoria,Precio)
+                    INSERT INTO ARTICULOS 
+                        ({code}{name}{description}{price}IdMarca,IdCategoria)
                     VALUES
-                        (@Code,@Name,@Description,@BrandId,@CategoryId,@Price)
-
+                        ({values}@BrandId,@CategoryId)
                     SET @IdGenerado = SCOPE_IDENTITY()
                     ";
-                parameters.Add(new SqlParameter("@Code",item.Code));
-                parameters.Add(new SqlParameter("@Name", item.Name));
-                parameters.Add(new SqlParameter("@Description", item.Description));
+                //parameters.Add(new SqlParameter("@Code",item.Code));
+                //parameters.Add(new SqlParameter("@Name", item.Name));
+                //parameters.Add(new SqlParameter("@Description", item.Description));
                 parameters.Add(new SqlParameter("@BrandId", item.Brand.Id));
                 parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
-                parameters.Add(new SqlParameter("@Price", temporalPrice));
+                //parameters.Add(new SqlParameter("@Price", temporalPrice));
 
                 int imagesCount = item.Images is null ? 0 : item.Images.Count;
                 if(imagesCount > 0)

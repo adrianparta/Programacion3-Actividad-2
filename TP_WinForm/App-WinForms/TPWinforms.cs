@@ -115,6 +115,8 @@ namespace App_WinForms
         private void TPWinforms_Activated(object sender, EventArgs e)
         {
             dgvItems.DataSource = itemList;
+            cbCategory.Items.Clear();
+            cbBrand.Items.Clear();
             cbCategory.Items.Add(WITHOUTFILTER);
             cbBrand.Items.Add(WITHOUTFILTER);
             categoryList.ForEach(x => cbCategory.Items.Add(x));

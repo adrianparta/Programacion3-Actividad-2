@@ -7,6 +7,7 @@ using Domain;
 using Data;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Business
 {
@@ -77,6 +78,7 @@ namespace Business
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
+                
                 string query = @"
                     DECLARE @IdGenerado int
 
@@ -87,17 +89,58 @@ namespace Business
 
                     SET @IdGenerado = SCOPE_IDENTITY()
                     ";
-                parameters.Add(new SqlParameter("@Code",item.Code));
+                parameters.Add(new SqlParameter("@Code",item.Code == "error" ? null : item.Code));
                 parameters.Add(new SqlParameter("@Name", item.Name));
                 parameters.Add(new SqlParameter("@Description", item.Description));
                 parameters.Add(new SqlParameter("@BrandId", item.Brand.Id));
                 parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
                 parameters.Add(new SqlParameter("@Price", temporalPrice));
+                
 
+                /*string query = @"
+                    DECLARE @IdGenerado int";
+                string insert = "INSERT INTO ARTICULOS (";
+                string values = "Values (";
+                if(item.Code != "error")
+                {
+                    insert += "Codigo,";
+                    values += item.Code + ",";
+                }
+                if (item.Name != "error")
+                {
+                    insert += "Nombre,";
+                    values += item.Name + ",";
+                }
+                if (item.Description != "error")
+                {
+                    insert += "Descripcion,";
+                    values += item.Description + ",";
+                }
+                if (item.Brand.Id != null)
+                {
+                    insert += "IdMarca,";
+                    values += item.Brand.Id + ",";
+                }
+                if (item.Category.Id != null)
+                {
+                    insert += "IdCategoria,";
+                    values += item.Category.Id + ",";
+                }
+                if (temporalPrice != null)
+                {
+                    insert += "Precio,";
+                    values += temporalPrice + ",";
+                }
+                insert.Remove(insert.Length - 1, 1);
+                values.Remove(values.Length - 1, 1);
+                insert += ")";
+                values += ")";
+                query += insert + values + "SET @IdGenerado = SCOPE_IDENTITY()";
+                */
                 int imagesCount = item.Images is null ? 0 : item.Images.Count;
                 if(imagesCount > 0)
                 {
-                    query += @"                    
+                    query += @"
                         INSERT INTO IMAGENES
                             (IdArticulo,ImagenUrl)
                         VALUES 

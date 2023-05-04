@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Domain;
 using Business;
 using System.Linq;
+using static App_WinForms.ItemDetails;
 
 namespace App_WinForms
 {
@@ -125,6 +126,16 @@ namespace App_WinForms
             cbBrand.Items.Add(NotAssigned);
             cbCategory.SelectedItem = cbCategory.Items[0];
             cbBrand.SelectedItem = cbBrand.Items[0];
+        }
+
+        private void buttonDeleteItem_Click(object sender, EventArgs e)
+        {
+            
+            Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
+            ItemBusiness.Remove(item);
+            itemList.Remove(item);
+            dgvItems.DataSource = null;
+            dgvItems.DataSource = itemList;
         }
     }
 }

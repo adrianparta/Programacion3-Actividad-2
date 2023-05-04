@@ -294,6 +294,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ItemDetails";
             this.Text = "Detalles del producto";
+            this.Load += new System.EventHandler(this.ItemDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

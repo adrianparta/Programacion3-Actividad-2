@@ -149,6 +149,10 @@ namespace App_WinForms
                 e.Handled = true;
             }
         }
-        
+
+        private void ItemDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

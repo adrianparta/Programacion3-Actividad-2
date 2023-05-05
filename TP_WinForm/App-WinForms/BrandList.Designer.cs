@@ -36,6 +36,8 @@
             this.txtBrandId = new System.Windows.Forms.TextBox();
             this.lblBrandDescription = new System.Windows.Forms.Label();
             this.lblBrandId = new System.Windows.Forms.Label();
+            this.txtCaregoryNew = new System.Windows.Forms.TextBox();
+            this.lblCateogryNew = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrands)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +52,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewBrands.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewBrands.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewBrands.Location = new System.Drawing.Point(85, 57);
+            this.dataGridViewBrands.Location = new System.Drawing.Point(85, 79);
             this.dataGridViewBrands.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewBrands.MultiSelect = false;
             this.dataGridViewBrands.Name = "dataGridViewBrands";
@@ -75,7 +77,7 @@
             // buttonDeleteBrand
             // 
             this.buttonDeleteBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteBrand.Location = new System.Drawing.Point(623, 140);
+            this.buttonDeleteBrand.Location = new System.Drawing.Point(623, 116);
             this.buttonDeleteBrand.Name = "buttonDeleteBrand";
             this.buttonDeleteBrand.Size = new System.Drawing.Size(100, 27);
             this.buttonDeleteBrand.TabIndex = 5;
@@ -85,7 +87,7 @@
             // buttonAddBrand
             // 
             this.buttonAddBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddBrand.Location = new System.Drawing.Point(623, 67);
+            this.buttonAddBrand.Location = new System.Drawing.Point(623, 33);
             this.buttonAddBrand.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddBrand.Name = "buttonAddBrand";
             this.buttonAddBrand.Size = new System.Drawing.Size(100, 28);
@@ -95,7 +97,8 @@
             // 
             // txtBrandDescription
             // 
-            this.txtBrandDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBrandDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBrandDescription.Location = new System.Drawing.Point(302, 368);
             this.txtBrandDescription.Name = "txtBrandDescription";
             this.txtBrandDescription.Size = new System.Drawing.Size(262, 22);
@@ -103,7 +106,7 @@
             // 
             // txtBrandId
             // 
-            this.txtBrandId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBrandId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtBrandId.Enabled = false;
             this.txtBrandId.Location = new System.Drawing.Point(116, 370);
             this.txtBrandId.Name = "txtBrandId";
@@ -112,7 +115,7 @@
             // 
             // lblBrandDescription
             // 
-            this.lblBrandDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBrandDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBrandDescription.AutoSize = true;
             this.lblBrandDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrandDescription.Location = new System.Drawing.Point(197, 370);
@@ -123,7 +126,7 @@
             // 
             // lblBrandId
             // 
-            this.lblBrandId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBrandId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblBrandId.AutoSize = true;
             this.lblBrandId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBrandId.Location = new System.Drawing.Point(84, 370);
@@ -132,11 +135,33 @@
             this.lblBrandId.TabIndex = 8;
             this.lblBrandId.Text = "ID";
             // 
+            // txtCaregoryNew
+            // 
+            this.txtCaregoryNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCaregoryNew.Location = new System.Drawing.Point(302, 33);
+            this.txtCaregoryNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCaregoryNew.Name = "txtCaregoryNew";
+            this.txtCaregoryNew.Size = new System.Drawing.Size(263, 22);
+            this.txtCaregoryNew.TabIndex = 13;
+            // 
+            // lblCateogryNew
+            // 
+            this.lblCateogryNew.AutoSize = true;
+            this.lblCateogryNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCateogryNew.Location = new System.Drawing.Point(84, 31);
+            this.lblCateogryNew.Name = "lblCateogryNew";
+            this.lblCateogryNew.Size = new System.Drawing.Size(194, 20);
+            this.lblCateogryNew.TabIndex = 12;
+            this.lblCateogryNew.Text = "Agregar nueva Categoria";
+            // 
             // BrandList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 445);
+            this.Controls.Add(this.txtCaregoryNew);
+            this.Controls.Add(this.lblCateogryNew);
             this.Controls.Add(this.txtBrandDescription);
             this.Controls.Add(this.txtBrandId);
             this.Controls.Add(this.lblBrandDescription);
@@ -166,5 +191,7 @@
         private System.Windows.Forms.TextBox txtBrandId;
         private System.Windows.Forms.Label lblBrandDescription;
         private System.Windows.Forms.Label lblBrandId;
+        private System.Windows.Forms.TextBox txtCaregoryNew;
+        private System.Windows.Forms.Label lblCateogryNew;
     }
 }

@@ -53,7 +53,7 @@
             this.dataGridViewCategories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewCategories.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCategories.Location = new System.Drawing.Point(70, 82);
-            this.dataGridViewCategories.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewCategories.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridViewCategories.MultiSelect = false;
             this.dataGridViewCategories.Name = "dataGridViewCategories";
             this.dataGridViewCategories.ReadOnly = true;
@@ -68,7 +68,7 @@
             // 
             this.buttonAddCategory.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddCategory.Location = new System.Drawing.Point(600, 32);
-            this.buttonAddCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddCategory.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddCategory.Name = "buttonAddCategory";
             this.buttonAddCategory.Size = new System.Drawing.Size(100, 28);
             this.buttonAddCategory.TabIndex = 1;
@@ -102,7 +102,7 @@
             // 
             // lblCategoryId
             // 
-            this.lblCategoryId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCategoryId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCategoryId.AutoSize = true;
             this.lblCategoryId.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategoryId.Location = new System.Drawing.Point(69, 362);
@@ -113,7 +113,7 @@
             // 
             // lblCateogryDescription
             // 
-            this.lblCateogryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCateogryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblCateogryDescription.AutoSize = true;
             this.lblCateogryDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCateogryDescription.Location = new System.Drawing.Point(181, 362);
@@ -124,7 +124,7 @@
             // 
             // txtCategoryId
             // 
-            this.txtCategoryId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCategoryId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCategoryId.Enabled = false;
             this.txtCategoryId.Location = new System.Drawing.Point(101, 362);
             this.txtCategoryId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -134,7 +134,8 @@
             // 
             // txtCaregoryDescription
             // 
-            this.txtCaregoryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCaregoryDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCaregoryDescription.Location = new System.Drawing.Point(287, 359);
             this.txtCaregoryDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCaregoryDescription.Name = "txtCaregoryDescription";
@@ -143,7 +144,8 @@
             // 
             // txtCaregoryNew
             // 
-            this.txtCaregoryNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCaregoryNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCaregoryNew.Location = new System.Drawing.Point(287, 37);
             this.txtCaregoryNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCaregoryNew.Name = "txtCaregoryNew";
@@ -152,7 +154,6 @@
             // 
             // lblCateogryNew
             // 
-            this.lblCateogryNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCateogryNew.AutoSize = true;
             this.lblCateogryNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCateogryNew.Location = new System.Drawing.Point(69, 35);
@@ -176,7 +177,7 @@
             this.Controls.Add(this.buttonDeleteCategory);
             this.Controls.Add(this.buttonAddCategory);
             this.Controls.Add(this.dataGridViewCategories);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CategoryList";
             this.Text = "CategoryList";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CategoryList_FormClosing);

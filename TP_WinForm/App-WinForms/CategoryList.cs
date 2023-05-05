@@ -31,6 +31,7 @@ namespace App_WinForms
         {
             dataGridViewCategories.DataSource = lstCategory;
             updateCategoryList += TPWinforms.UpdateCategoryList;
+            UpdateDataGridViewCategory();
             if(lstCategory.Count > 0)
             {
                 dataGridViewCategories.Rows[0].Selected = true;
@@ -140,12 +141,19 @@ namespace App_WinForms
             if(lstCategory.Count == 0)
             {
                 dataGridViewCategories.DataSource = new List<Category>() { new Category() {Id = 0, Description = "No hay categorias creadas" } };
+                txtCaregoryDescription.Enabled = false;
+                buttonDeleteCategory.Enabled = false;
+                buttonUpdateCategory.Enabled = false;
             }
             else
             {
                 dataGridViewCategories.DataSource = lstCategory;
+                txtCaregoryDescription.Enabled = true;
+                buttonDeleteCategory.Enabled = true;
+                buttonUpdateCategory.Enabled = true;
             }
             dataGridViewCategories.Rows[0].Selected = true;
+            ModifyTxt(0);
         }
     }
 }

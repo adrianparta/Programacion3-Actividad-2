@@ -49,8 +49,10 @@ namespace Business
             try
             {
                 string query =
-                    @"INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)
-                    SELECT SCOPE_IDENTITY()";
+                    @"IF NOT EXISTS (SELECT 1 FROM CATEGORIAS WHERE Descripcion = @Description)
+                    BEGIN
+                        INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)
+                    END";
                 SqlParameter returnValue = new SqlParameter
                 {
                     Direction = ParameterDirection.ReturnValue
@@ -59,8 +61,15 @@ namespace Business
                     new SqlParameter("@Description", category.Description)
                 };
                 data.SetQuery(query, parameters);
-                data.ExecuteNonQuery();
-                return data.GetLastId("CATEGORIAS");
+                if(data.ExecuteNonQuery() > 0)
+                {
+                    return data.GetLastId("CATEGORIAS");
+                }
+                else
+                {
+                    return -1;
+                }
+                
             }
             catch (Exception ex)
             {

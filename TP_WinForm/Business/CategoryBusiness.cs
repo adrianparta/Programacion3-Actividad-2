@@ -53,14 +53,13 @@ namespace Business
                     BEGIN
                         INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)
                     END";
-                SqlParameter returnValue = new SqlParameter
-                {
-                    Direction = ParameterDirection.ReturnValue
-                };
+
                 List<SqlParameter> parameters = new List<SqlParameter>() {
                     new SqlParameter("@Description", category.Description)
                 };
+
                 data.SetQuery(query, parameters);
+
                 if(data.ExecuteNonQuery() > 0)
                 {
                     return data.GetLastId("CATEGORIAS");
@@ -68,8 +67,7 @@ namespace Business
                 else
                 {
                     return -1;
-                }
-                
+                }            
             }
             catch (Exception ex)
             {

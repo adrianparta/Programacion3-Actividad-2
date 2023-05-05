@@ -61,18 +61,25 @@ namespace App_WinForms
         }
         private void buttonAddCategory_Click(object sender, EventArgs e)
         {
-            Category categoryNew = new Category() { Description = txtCaregoryNew.Text };
-            int idNew = CategoryBusiness.Add(categoryNew);
-            if (idNew > 0)
+            if(string.IsNullOrEmpty(txtCaregoryNew.Text))
             {
-                categoryNew.Id = idNew;
-                lstCategory.Add(categoryNew);
-                UpdateDataGridViewCategory();
-                MessageBox.Show("Categoría agregada con exito!");
+                Category categoryNew = new Category() { Description = txtCaregoryNew.Text };
+                int idNew = CategoryBusiness.Add(categoryNew);
+                if (idNew > 0)
+                {
+                    categoryNew.Id = idNew;
+                    lstCategory.Add(categoryNew);
+                    UpdateDataGridViewCategory();
+                    MessageBox.Show("Categoría agregada con exito!");
+                }
+                else
+                {
+                    MessageBox.Show("Categoria no pudo ser agregada");
+                }
             }
             else
             {
-                MessageBox.Show("Categoria no pudo ser agregada");
+                MessageBox.Show("Debes ingresar una descripcion antes de agregar");
             }
         }
 
@@ -80,27 +87,34 @@ namespace App_WinForms
         {
             if(categorySelected != null)
             {
-                if(categorySelected.Description != txtCaregoryDescription.Text)
+                if(string.IsNullOrEmpty (txtCaregoryDescription.Text))
                 {
-                    if(CategoryBusiness.Update(new Category() 
-                    { 
-                        Id = categorySelected.Id, 
-                        Description = txtCaregoryDescription.Text
-                    }) > 0)
+                    if(categorySelected.Description != txtCaregoryDescription.Text)
                     {
-                        int index = lstCategory.FindIndex(x => x.Id == categorySelected.Id);
-                        lstCategory[index].Description = txtCaregoryDescription.Text;
-                        UpdateDataGridViewCategory();
-                        MessageBox.Show("Categoria actualizada con exito");
+                        if(CategoryBusiness.Update(new Category() 
+                        { 
+                            Id = categorySelected.Id, 
+                            Description = txtCaregoryDescription.Text
+                        }) > 0)
+                        {
+                            int index = lstCategory.FindIndex(x => x.Id == categorySelected.Id);
+                            lstCategory[index].Description = txtCaregoryDescription.Text;
+                            UpdateDataGridViewCategory();
+                            MessageBox.Show("Categoria actualizada con exito");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Categoria no pudo ser actualizada");
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Categoria no pudo ser actualizada");
+                        MessageBox.Show("No hay nada que actualizar!");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No hay nada que actualizar!");
+                    MessageBox.Show("Debes ingresar una descripcion antes de actualizar");
                 }
             }
             else

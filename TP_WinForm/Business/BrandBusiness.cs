@@ -47,13 +47,26 @@ namespace Business
             AccessData data = new AccessData();
             try
             {
-                string query = "INSERT INTO MARCAS (Descripcion) VALUES (@Description)";
+                string query =
+                    @"IF NOT EXISTS (SELECT 1 FROM MARCAS WHERE Descripcion = @Description)
+                    BEGIN
+                        INSERT INTO MARCAS (Descripcion) VALUES (@Description)
+                    END";
+
                 List<SqlParameter> parameters = new List<SqlParameter>() {
                     new SqlParameter("@Description", brand.Description)
                 };
+
                 data.SetQuery(query, parameters);
 
-                return data.ExecuteNonQuery();
+                if (data.ExecuteNonQuery() > 0)
+                {
+                    return data.GetLastId("MARCAS");
+                }
+                else
+                {
+                    return -1;
+                }
             }
             catch (Exception ex)
             {

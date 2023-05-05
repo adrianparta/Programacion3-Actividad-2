@@ -44,8 +44,8 @@ namespace App_WinForms
 
         private void buttonBrandWindow_Click(object sender, EventArgs e)
         {
-            BrandList brandList = new BrandList();
-            brandList.ShowDialog();
+            BrandList brandListForm = new BrandList(brandList);
+            brandListForm.ShowDialog();
         }
 
         private void buttonCategoryWindow_Click(object sender, EventArgs e)

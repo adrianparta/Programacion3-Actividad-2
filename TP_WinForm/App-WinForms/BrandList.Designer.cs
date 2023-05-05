@@ -36,8 +36,8 @@
             this.txtBrandId = new System.Windows.Forms.TextBox();
             this.lblBrandDescription = new System.Windows.Forms.Label();
             this.lblBrandId = new System.Windows.Forms.Label();
-            this.txtCaregoryNew = new System.Windows.Forms.TextBox();
-            this.lblCateogryNew = new System.Windows.Forms.Label();
+            this.txtBrandNew = new System.Windows.Forms.TextBox();
+            this.lblBrandNew = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBrands)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +73,7 @@
             this.buttonUpdateBrand.TabIndex = 6;
             this.buttonUpdateBrand.Text = "Actualizar";
             this.buttonUpdateBrand.UseVisualStyleBackColor = true;
+            this.buttonUpdateBrand.Click += new System.EventHandler(this.buttonUpdateBrand_Click);
             // 
             // buttonDeleteBrand
             // 
@@ -83,6 +84,7 @@
             this.buttonDeleteBrand.TabIndex = 5;
             this.buttonDeleteBrand.Text = "Eliminar";
             this.buttonDeleteBrand.UseVisualStyleBackColor = true;
+            this.buttonDeleteBrand.Click += new System.EventHandler(this.buttonDeleteBrand_Click);
             // 
             // buttonAddBrand
             // 
@@ -94,6 +96,7 @@
             this.buttonAddBrand.TabIndex = 4;
             this.buttonAddBrand.Text = "Añadir";
             this.buttonAddBrand.UseVisualStyleBackColor = true;
+            this.buttonAddBrand.Click += new System.EventHandler(this.buttonAddBrand_Click);
             // 
             // txtBrandDescription
             // 
@@ -135,33 +138,33 @@
             this.lblBrandId.TabIndex = 8;
             this.lblBrandId.Text = "ID";
             // 
-            // txtCaregoryNew
+            // txtBrandNew
             // 
-            this.txtCaregoryNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtBrandNew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCaregoryNew.Location = new System.Drawing.Point(302, 33);
-            this.txtCaregoryNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCaregoryNew.Name = "txtCaregoryNew";
-            this.txtCaregoryNew.Size = new System.Drawing.Size(263, 22);
-            this.txtCaregoryNew.TabIndex = 13;
+            this.txtBrandNew.Location = new System.Drawing.Point(302, 33);
+            this.txtBrandNew.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBrandNew.Name = "txtBrandNew";
+            this.txtBrandNew.Size = new System.Drawing.Size(263, 22);
+            this.txtBrandNew.TabIndex = 13;
             // 
-            // lblCateogryNew
+            // lblBrandNew
             // 
-            this.lblCateogryNew.AutoSize = true;
-            this.lblCateogryNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCateogryNew.Location = new System.Drawing.Point(84, 31);
-            this.lblCateogryNew.Name = "lblCateogryNew";
-            this.lblCateogryNew.Size = new System.Drawing.Size(194, 20);
-            this.lblCateogryNew.TabIndex = 12;
-            this.lblCateogryNew.Text = "Agregar nueva Categoria";
+            this.lblBrandNew.AutoSize = true;
+            this.lblBrandNew.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBrandNew.Location = new System.Drawing.Point(84, 31);
+            this.lblBrandNew.Name = "lblBrandNew";
+            this.lblBrandNew.Size = new System.Drawing.Size(169, 20);
+            this.lblBrandNew.TabIndex = 12;
+            this.lblBrandNew.Text = "Agregar nueva Marca";
             // 
             // BrandList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 445);
-            this.Controls.Add(this.txtCaregoryNew);
-            this.Controls.Add(this.lblCateogryNew);
+            this.Controls.Add(this.txtBrandNew);
+            this.Controls.Add(this.lblBrandNew);
             this.Controls.Add(this.txtBrandDescription);
             this.Controls.Add(this.txtBrandId);
             this.Controls.Add(this.lblBrandDescription);
@@ -191,7 +194,7 @@
         private System.Windows.Forms.TextBox txtBrandId;
         private System.Windows.Forms.Label lblBrandDescription;
         private System.Windows.Forms.Label lblBrandId;
-        private System.Windows.Forms.TextBox txtCaregoryNew;
-        private System.Windows.Forms.Label lblCateogryNew;
+        private System.Windows.Forms.TextBox txtBrandNew;
+        private System.Windows.Forms.Label lblBrandNew;
     }
 }

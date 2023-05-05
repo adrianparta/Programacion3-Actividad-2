@@ -50,8 +50,8 @@ namespace App_WinForms
 
         private void buttonCategoryWindow_Click(object sender, EventArgs e)
         {
-            CategoryList categoryList = new CategoryList();
-            categoryList.ShowDialog();
+            CategoryList categoryListForm = new CategoryList(categoryList);
+            categoryListForm.ShowDialog();
         }
 
         private void FilterEvent(object sender, EventArgs e)

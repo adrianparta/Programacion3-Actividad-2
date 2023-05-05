@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -47,13 +48,19 @@ namespace Business
             AccessData data = new AccessData();
             try
             {
-                string query = "INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)";
+                string query =
+                    @"INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)
+                    SELECT SCOPE_IDENTITY()";
+                SqlParameter returnValue = new SqlParameter
+                {
+                    Direction = ParameterDirection.ReturnValue
+                };
                 List<SqlParameter> parameters = new List<SqlParameter>() {
                     new SqlParameter("@Description", category.Description)
                 };
                 data.SetQuery(query, parameters);
-
-                return data.ExecuteNonQuery();
+                data.ExecuteNonQuery();
+                return data.GetLastId("CATEGORIAS");
             }
             catch (Exception ex)
             {

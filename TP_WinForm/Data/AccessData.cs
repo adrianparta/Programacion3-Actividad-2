@@ -70,6 +70,13 @@ namespace Data
                 return -1;
             }
         }
+        public int GetLastId(string table)
+        {
+            SetQuery($"SELECT MAX(Id) FROM {table}");
+            reader = command.ExecuteReader();
+            reader.Read();
+            return Reader.GetInt32(0);
+        }
         public void Close()
         {
             if (this.reader != null)

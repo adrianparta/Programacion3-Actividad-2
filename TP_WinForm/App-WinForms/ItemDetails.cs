@@ -16,6 +16,7 @@ namespace App_WinForms
         private List<Image> images;
         private List<Category> categories;
         private List<Brand> brands;
+        private Item item;
         int UrlIndex = 0;
         public delegate void UpdateItemList();
         public UpdateItemList updateItemList;
@@ -26,7 +27,7 @@ namespace App_WinForms
         public ItemDetails(List<Category> categories, List<Brand> brands, Item item = null)
         {
             InitializeComponent();
-
+            this.item = item;
             if (item != null)
             {
                 this.buttonApplyItem.Visible = true;
@@ -102,21 +103,24 @@ namespace App_WinForms
         private void buttonApplyItem_Click(object sender, EventArgs e)
         {
 
-            // No se como mostrar el Id automaticamente
+            // TODO: 
             Item aux = new Item();
-            aux.Id = ItemBusiness.GetMaxID() + 1;
-            aux.Code = textBoxCode.Text;
-            aux.Name = textBoxName.Text;
-            aux.Description = textBoxDescription.Text;
-            //TODO: Ver como solucionar esto con la clase money y que se cargue bien en la base de datos
-            //Money price = decimal.Parse(textBoxPrice.Text);
-            aux.Price = textBoxPrice.Text;
-            aux.Brand = brands[cbBrands.SelectedIndex];
-            aux.Category = categories[cbCategories.SelectedIndex];
-            aux.Images = images;
-            if (ItemBusiness.Add(aux) == 1)
+                aux.Id = Convert.ToInt32(textBoxID.Text);
+                aux.Code = textBoxCode.Text;
+                aux.Name = textBoxName.Text;
+                aux.Description = textBoxDescription.Text;
+                aux.Price = textBoxPrice.Text;
+                aux.Brand = brands[cbBrands.SelectedIndex];
+                aux.Category = categories[cbCategories.SelectedIndex];
+                aux.Images = images;
+           
+            if (ItemBusiness.Update(item, aux) == 1)
             {
-                textBoxID.Text = (aux.Id + 1).ToString();
+                MessageBox.Show("Se ha actualizado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se han aplicado actualizaciones");
             }
             updateItemList.Invoke();
         }

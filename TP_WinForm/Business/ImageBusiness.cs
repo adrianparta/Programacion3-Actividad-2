@@ -80,6 +80,7 @@ namespace Business
 
         public static int UpdateList(List<Image> oldImages, List<Image> updatedImages)
         {
+            if(oldImages == updatedImages) { return 0; }
             AccessData data = new AccessData();
             List<SqlParameter> parameters = new List<SqlParameter>();
             try

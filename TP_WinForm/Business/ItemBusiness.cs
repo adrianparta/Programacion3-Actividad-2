@@ -182,7 +182,8 @@ namespace Business
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
-                string query = "UPDATE ARTICULOS SET ";
+                string query = "UPDATE ARTICULOS SET";
+                parameters.Add(new SqlParameter("@Id", oldItem.Id));
                 if (oldItem.Name != updatedItem.Name)
                 {
                     query += " Nombre = @Name,";
@@ -211,11 +212,10 @@ namespace Business
                 if (oldItem.Price != updatedItem.Price)
                 {
                     query += " Precio = @Price,";
-                    parameters.Add(new SqlParameter("@Price", updatedItem.Price));
+                    parameters.Add(new SqlParameter("@Price", updatedItem.Price.Price));
                 }
-
-                ImageBusiness.UpdateList(oldItem.Images, updatedItem.Images);
-
+                int imageUpdate = ImageBusiness.UpdateList(oldItem.Images, updatedItem.Images);
+                Console.WriteLine(imageUpdate);
                 if (query[query.Length - 1] == ',')
                 {
                     query = query.Remove(query.Length - 1, 1);               
@@ -225,7 +225,7 @@ namespace Business
                     return -1;
                 }
 
-                query += " WHERE IdArticulo = @Id";                            
+                query += " WHERE Id = @Id";                            
 
                 data.SetQuery(query, parameters);
 

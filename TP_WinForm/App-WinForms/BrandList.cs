@@ -52,7 +52,7 @@ namespace App_WinForms
         }
         private void buttonAddBrand_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(txtBrandNew.Text))
+            if(!string.IsNullOrWhiteSpace(txtBrandNew.Text))
             {
                 Brand BrandNew = new Brand() { Description = txtBrandNew.Text };
                 int idNew = BrandBusiness.Add(BrandNew);
@@ -104,7 +104,7 @@ namespace App_WinForms
         {
             if (brandSelected != null)
             {
-                if(string.IsNullOrEmpty(txtBrandDescription.Text))
+                if(!string.IsNullOrEmpty(txtBrandDescription.Text))
                 {
                     if (brandSelected.Description != txtBrandDescription.Text)
                     {

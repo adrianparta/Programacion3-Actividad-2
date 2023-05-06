@@ -61,7 +61,7 @@ namespace App_WinForms
         }
         private void buttonAddCategory_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txtCaregoryNew.Text))
+            if(!string.IsNullOrEmpty(txtCaregoryNew.Text))
             {
                 Category categoryNew = new Category() { Description = txtCaregoryNew.Text };
                 int idNew = CategoryBusiness.Add(categoryNew);
@@ -87,7 +87,7 @@ namespace App_WinForms
         {
             if(categorySelected != null)
             {
-                if(string.IsNullOrEmpty (txtCaregoryDescription.Text))
+                if(!string.IsNullOrEmpty (txtCaregoryDescription.Text))
                 {
                     if(categorySelected.Description != txtCaregoryDescription.Text)
                     {

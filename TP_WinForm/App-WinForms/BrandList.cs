@@ -85,7 +85,6 @@ namespace App_WinForms
                         int index = lstBrand.FindIndex(x => x.Id == brandSelected.Id);
                         lstBrand.RemoveAt(index);
                         UpdateDataGridViewBrand();
-
                         MessageBox.Show("Marca borrada con exito");
                     }
                     else

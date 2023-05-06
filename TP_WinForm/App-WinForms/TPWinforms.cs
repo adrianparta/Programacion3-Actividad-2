@@ -32,8 +32,15 @@ namespace App_WinForms
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            ItemDetails itemDetails = new ItemDetails(categoryList, brandList, (Item)dgvItems.SelectedRows[0].DataBoundItem);
-            itemDetails.ShowDialog();
+            if(dgvItems.DataSource == null)
+            {
+                ItemDetails itemDetails = new ItemDetails(categoryList, brandList, (Item)dgvItems.SelectedRows[0].DataBoundItem);
+                itemDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No hay items en la lista");
+            }
         }
 
         private void buttonAddItem_Click(object sender, EventArgs e)
@@ -75,15 +82,15 @@ namespace App_WinForms
             }
             if (txtNombre.TextLength > 0)
             {
-                itemFilteredList = itemFilteredList.Where(x => x.Name.Contains(txtNombre.Text)).ToList();
+                itemFilteredList = itemFilteredList.Where(x => x.Name.ToLower().Contains(txtNombre.Text.ToLower())).ToList();
             }
             if (txtCode.TextLength > 0)
             {
-                itemFilteredList = itemFilteredList.Where(x => x.Code.Contains(txtCode.Text)).ToList();
+                itemFilteredList = itemFilteredList.Where(x => x.Code.ToLower().Contains(txtCode.Text.ToLower())).ToList();
             }
             if (txtDescription.TextLength > 0)
             {
-                itemFilteredList = itemFilteredList.Where(x => x.Description.Contains(txtDescription.Text)).ToList();
+                itemFilteredList = itemFilteredList.Where(x => x.Description.ToLower().Contains(txtDescription.Text.ToLower())).ToList();
             }
             if (numPriceMin.Value > 0)
             {
@@ -130,12 +137,28 @@ namespace App_WinForms
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)
         {
-            
-            Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
-            ItemBusiness.Remove(item);
-            itemList.Remove(item);
-            dgvItems.DataSource = null;
-            dgvItems.DataSource = itemList;
+            if(dgvItems.DataSource == null)
+            {
+                Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
+                if (MessageBox.Show($"Seguro desea eliminar {item.Name}", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    if(ItemBusiness.Remove(item) > 0)
+                    {
+                        itemList.Remove(item);
+                        dgvItems.DataSource = null;
+                        dgvItems.DataSource = itemList;
+                        MessageBox.Show("Item eliminado con exito");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El item no pudo ser eliminado");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay items en la lista");
+            }
         }
 
         private void numPriceMin_KeyUp(object sender, KeyEventArgs e)

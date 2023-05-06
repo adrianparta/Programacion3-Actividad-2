@@ -134,7 +134,6 @@ namespace App_WinForms
                         int index = lstCategory.FindIndex(x => x.Id == categorySelected.Id);
                         lstCategory.RemoveAt(index);
                         UpdateDataGridViewCategory();
-
                         MessageBox.Show("Categoria borrada con exito");
                     }
                     else

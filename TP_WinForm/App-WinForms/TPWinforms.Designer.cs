@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.cbBrand = new System.Windows.Forms.ComboBox();
             this.dgvItems = new System.Windows.Forms.DataGridView();
@@ -60,7 +60,7 @@
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(472, 38);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(160, 24);
             this.cbCategory.TabIndex = 0;
@@ -70,7 +70,7 @@
             // 
             this.cbBrand.FormattingEnabled = true;
             this.cbBrand.Location = new System.Drawing.Point(668, 37);
-            this.cbBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBrand.Margin = new System.Windows.Forms.Padding(4);
             this.cbBrand.Name = "cbBrand";
             this.cbBrand.Size = new System.Drawing.Size(160, 24);
             this.cbBrand.TabIndex = 1;
@@ -86,17 +86,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvItems.Location = new System.Drawing.Point(52, 130);
-            this.dgvItems.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
             this.dgvItems.ReadOnly = true;
@@ -109,7 +109,7 @@
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(228, 39);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(192, 22);
@@ -120,7 +120,7 @@
             // 
             this.buttonViewDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonViewDetails.Location = new System.Drawing.Point(1021, 96);
-            this.buttonViewDetails.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonViewDetails.Margin = new System.Windows.Forms.Padding(4);
             this.buttonViewDetails.Name = "buttonViewDetails";
             this.buttonViewDetails.Size = new System.Drawing.Size(136, 31);
             this.buttonViewDetails.TabIndex = 5;
@@ -132,7 +132,7 @@
             // 
             this.buttonBrandWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonBrandWindow.Location = new System.Drawing.Point(52, 485);
-            this.buttonBrandWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonBrandWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBrandWindow.Name = "buttonBrandWindow";
             this.buttonBrandWindow.Size = new System.Drawing.Size(152, 31);
             this.buttonBrandWindow.TabIndex = 6;
@@ -144,7 +144,7 @@
             // 
             this.buttonCategoryWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCategoryWindow.Location = new System.Drawing.Point(244, 485);
-            this.buttonCategoryWindow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonCategoryWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCategoryWindow.Name = "buttonCategoryWindow";
             this.buttonCategoryWindow.Size = new System.Drawing.Size(161, 31);
             this.buttonCategoryWindow.TabIndex = 7;
@@ -156,7 +156,7 @@
             // 
             this.buttonDeleteItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonDeleteItem.Location = new System.Drawing.Point(1021, 169);
-            this.buttonDeleteItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonDeleteItem.Name = "buttonDeleteItem";
             this.buttonDeleteItem.Size = new System.Drawing.Size(136, 31);
             this.buttonDeleteItem.TabIndex = 8;
@@ -168,7 +168,7 @@
             // 
             this.buttonAddItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonAddItem.Location = new System.Drawing.Point(1021, 242);
-            this.buttonAddItem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddItem.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAddItem.Name = "buttonAddItem";
             this.buttonAddItem.Size = new System.Drawing.Size(136, 31);
             this.buttonAddItem.TabIndex = 9;
@@ -224,7 +224,7 @@
             // txtCode
             // 
             this.txtCode.Location = new System.Drawing.Point(61, 38);
-            this.txtCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtCode.MaxLength = 50;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(121, 22);
@@ -234,7 +234,7 @@
             // txtDescription
             // 
             this.txtDescription.Location = new System.Drawing.Point(61, 91);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.MaxLength = 50;
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(359, 22);
@@ -324,9 +324,10 @@
             this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.cbBrand);
             this.Controls.Add(this.cbCategory);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1237, 573);
             this.Name = "TPWinforms";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPWinforms";
             this.Activated += new System.EventHandler(this.TPWinforms_Activated);
             this.Load += new System.EventHandler(this.TPWinforms_Load);

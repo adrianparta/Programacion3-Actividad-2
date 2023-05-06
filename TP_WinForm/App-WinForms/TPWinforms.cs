@@ -87,11 +87,11 @@ namespace App_WinForms
             }
             if (numPriceMin.Value > 0)
             {
-                itemFilteredList = itemFilteredList.Where(x => x.Price > numPriceMin.Value).ToList();
+                itemFilteredList = itemFilteredList.Where(x => x.Price >= numPriceMin.Value).ToList();
             }
             if (numPriceMax.Value > 0)
             {
-                itemFilteredList = itemFilteredList.Where(x => x.Price < numPriceMax.Value).ToList();
+                itemFilteredList = itemFilteredList.Where(x => x.Price <= numPriceMax.Value).ToList();
             }
 
             dgvItems.DataSource = itemFilteredList;
@@ -136,6 +136,11 @@ namespace App_WinForms
             itemList.Remove(item);
             dgvItems.DataSource = null;
             dgvItems.DataSource = itemList;
+        }
+
+        private void numPriceMin_KeyUp(object sender, KeyEventArgs e)
+        {
+            FilterEvent(sender, e);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace App_WinForms
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            if(dgvItems.DataSource == null)
+            if(dgvItems.SelectedRows.Count > 0)
             {
                 ItemDetails itemDetails = new ItemDetails(categoryList, brandList, (Item)dgvItems.SelectedRows[0].DataBoundItem);
                 itemDetails.ShowDialog();
@@ -137,7 +137,7 @@ namespace App_WinForms
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)
         {
-            if(dgvItems.DataSource == null)
+            if(dgvItems.SelectedRows.Count > 0)
             {
                 Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
                 if (MessageBox.Show($"Seguro desea eliminar {item.Name}", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)

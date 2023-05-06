@@ -55,7 +55,7 @@ namespace Domain
         }
         public override string ToString()
         {
-            return Price.ToString("C", CultureInfo.CurrentCulture);
+            return Price.ToString("C", CultureInfo.CreateSpecificCulture("es-AR"));
         }
         public override bool Equals(object obj)
         {

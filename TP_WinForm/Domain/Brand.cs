@@ -30,6 +30,8 @@ namespace Domain
         }
         public static bool operator ==(Brand left, Brand right)
         {
+            if (left is null && right is null) return true;
+            if (left is null || right is null) return false;
             return left.Id == right.Id;
         }
         public static bool operator !=(Brand left, Brand right)

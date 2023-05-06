@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Domain;
 using Business;
 using System.Linq;
+using static App_WinForms.ItemDetails;
 
 namespace App_WinForms
 {
@@ -43,14 +44,14 @@ namespace App_WinForms
 
         private void buttonBrandWindow_Click(object sender, EventArgs e)
         {
-            BrandList brandList = new BrandList();
-            brandList.ShowDialog();
+            BrandList brandListForm = new BrandList(brandList);
+            brandListForm.ShowDialog();
         }
 
         private void buttonCategoryWindow_Click(object sender, EventArgs e)
         {
-            CategoryList categoryList = new CategoryList();
-            categoryList.ShowDialog();
+            CategoryList categoryListForm = new CategoryList(categoryList);
+            categoryListForm.ShowDialog();
         }
 
         private void FilterEvent(object sender, EventArgs e)
@@ -115,6 +116,8 @@ namespace App_WinForms
         private void TPWinforms_Activated(object sender, EventArgs e)
         {
             dgvItems.DataSource = itemList;
+            cbCategory.Items.Clear();
+            cbBrand.Items.Clear();
             cbCategory.Items.Add(WITHOUTFILTER);
             cbBrand.Items.Add(WITHOUTFILTER);
             categoryList.ForEach(x => cbCategory.Items.Add(x));
@@ -123,6 +126,16 @@ namespace App_WinForms
             cbBrand.Items.Add(NotAssigned);
             cbCategory.SelectedItem = cbCategory.Items[0];
             cbBrand.SelectedItem = cbBrand.Items[0];
+        }
+
+        private void buttonDeleteItem_Click(object sender, EventArgs e)
+        {
+            
+            Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
+            ItemBusiness.Remove(item);
+            itemList.Remove(item);
+            dgvItems.DataSource = null;
+            dgvItems.DataSource = itemList;
         }
     }
 }

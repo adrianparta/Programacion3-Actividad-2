@@ -275,6 +275,7 @@
             this.Controls.Add(this.labelID);
             this.Name = "ItemDetails";
             this.Text = "Detalles del producto";
+            this.Load += new System.EventHandler(this.ItemDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -2,6 +2,7 @@
 using Domain;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -47,13 +48,26 @@ namespace Business
             AccessData data = new AccessData();
             try
             {
-                string query = "INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)";
+                string query =
+                    @"IF NOT EXISTS (SELECT 1 FROM CATEGORIAS WHERE Descripcion = @Description)
+                    BEGIN
+                        INSERT INTO CATEGORIAS (Descripcion) VALUES (@Description)
+                    END";
+
                 List<SqlParameter> parameters = new List<SqlParameter>() {
                     new SqlParameter("@Description", category.Description)
                 };
+
                 data.SetQuery(query, parameters);
 
-                return data.ExecuteNonQuery();
+                if(data.ExecuteNonQuery() > 0)
+                {
+                    return data.GetLastId("CATEGORIAS");
+                }
+                else
+                {
+                    return -1;
+                }            
             }
             catch (Exception ex)
             {

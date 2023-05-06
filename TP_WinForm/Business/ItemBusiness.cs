@@ -7,6 +7,7 @@ using Domain;
 using Data;
 using System.Text.RegularExpressions;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Business
 {
@@ -122,7 +123,7 @@ namespace Business
                 int imagesCount = item.Images is null ? 0 : item.Images.Count;
                 if(imagesCount > 0)
                 {
-                    query += @"                    
+                    query += @"
                         INSERT INTO IMAGENES
                             (IdArticulo,ImagenUrl)
                         VALUES 

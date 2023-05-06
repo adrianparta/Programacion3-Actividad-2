@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Configuration;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.Remoting.Proxies;
 using System.Windows.Forms;
@@ -25,6 +26,7 @@ namespace App_WinForms
         public ItemDetails(List<Category> categories, List<Brand> brands, Item item = null)
         {
             InitializeComponent();
+
             if (item != null)
             {
                 this.textBoxID.Text = item.Id.ToString();
@@ -39,6 +41,7 @@ namespace App_WinForms
                     LoadImage(images[UrlIndex].Url);
                 }
             }
+            else { this.textBoxID.Text = (ItemBusiness.GetMaxID() + 1).ToString(); }
             this.categories = categories;
             this.brands = brands;
             foreach (var category in this.categories)
@@ -115,6 +118,7 @@ namespace App_WinForms
 
         private void buttonApplyItem_Click(object sender, EventArgs e)
         {
+
             // No se como mostrar el Id automaticamente
             Item aux = new Item();
             aux.Id = ItemBusiness.GetMaxID() + 1;
@@ -128,10 +132,11 @@ namespace App_WinForms
             aux.Category = categories[cbCategories.SelectedIndex];
             aux.Images = images;
             if(ItemBusiness.Add(aux) == 1) {
-                textBoxID.Text = aux.Id.ToString();
+                textBoxID.Text = (aux.Id + 1).ToString();
             }
             
             updateItemList.Invoke();
+
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -157,6 +162,6 @@ namespace App_WinForms
                 e.Handled = true;
             }
         }
-
+        
     }
 }

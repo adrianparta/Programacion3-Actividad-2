@@ -59,7 +59,7 @@ namespace Business
                     itemList.Add(itemAux);
                 }
 
-                return itemList;        
+                return itemList;
             }
             catch (Exception ex)
             {
@@ -98,7 +98,7 @@ namespace Business
                     values += $"@{description}";
                     parameters.Add(new SqlParameter("@Descripcion", item.Description));
                 }
-                if(!(item.Price is null))
+                if (!(item.Price is null))
                 {
                     price = "Precio,";
                     values += $"@{price}";
@@ -121,7 +121,7 @@ namespace Business
                 //parameters.Add(new SqlParameter("@Price", temporalPrice));
 
                 int imagesCount = item.Images is null ? 0 : item.Images.Count;
-                if(imagesCount > 0)
+                if (imagesCount > 0)
                 {
                     query += @"
                         INSERT INTO IMAGENES
@@ -133,11 +133,11 @@ namespace Business
                         query += $" (@IdGenerado, @ImagenUrl{i}),";
                         parameters.Add(new SqlParameter($"@ImagenUrl{i}", item.Images[i].Url));
                     }
-                    query = query.Remove(query.Length - 1);                  
+                    query = query.Remove(query.Length - 1);
                 }
 
                 data.SetQuery(query, parameters);
-                
+
                 return data.ExecuteNonQuery();
             }
             catch (Exception ex)

@@ -19,7 +19,7 @@ namespace App_WinForms
         int UrlIndex = 0;
         public delegate void UpdateItemList();
         public UpdateItemList updateItemList;
-        
+
 
 
 
@@ -29,19 +29,24 @@ namespace App_WinForms
 
             if (item != null)
             {
+                this.buttonApplyItem.Visible = true;
                 this.textBoxID.Text = item.Id.ToString();
                 this.textBoxCode.Text = item.Code;
                 this.textBoxName.Text = item.Name;
                 this.textBoxDescription.Text = item.Description;
                 this.textBoxPrice.Text = item.Price.ToString();
                 images = item.Images;
-               
+
                 if (images.Count > 0)
                 {
                     LoadImage(images[UrlIndex].Url);
                 }
             }
-            else { this.textBoxID.Text = (ItemBusiness.GetMaxID() + 1).ToString(); }
+            else
+            {
+                this.buttonAddItem.Visible = true;
+                this.textBoxID.Text = (ItemBusiness.GetMaxID() + 1).ToString();
+            }
             this.categories = categories;
             this.brands = brands;
             foreach (var category in this.categories)
@@ -52,23 +57,15 @@ namespace App_WinForms
             {
                 cbCategories.SelectedIndex = cbCategories.FindStringExact(item.Category.ToString());
             }
-            else
+            foreach (var brand in this.brands)
             {
-                cbCategories.SelectedIndex = 0;
+                cbBrands.Items.Add(brand.Description);
             }
-                foreach (var brand in this.brands)
-                {
-                    cbBrands.Items.Add(brand.Description);
-                }
             if (item != null)
             {
                 cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
             }
-            else
-            {
-                cbBrands.SelectedIndex = 0;
-            }
-                updateItemList += TPWinforms.UpdateItemList;
+            updateItemList += TPWinforms.UpdateItemList;
         }
         private void LoadImage(string url)
         {
@@ -82,20 +79,11 @@ namespace App_WinForms
             }
         }
 
-        private void labelDescription_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelName_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonNextImage_Click(object sender, EventArgs e)
         {
             UrlIndex++;
-            if(images.Count == UrlIndex) {
+            if (images.Count == UrlIndex)
+            {
                 UrlIndex = 0;
             }
             LoadImage(images[UrlIndex].Url);
@@ -109,11 +97,6 @@ namespace App_WinForms
                 UrlIndex = images.Count - 1;
             }
             LoadImage(images[UrlIndex].Url);
-        }
-
-        private void textBoxCode_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void buttonApplyItem_Click(object sender, EventArgs e)
@@ -131,27 +114,18 @@ namespace App_WinForms
             aux.Brand = brands[cbBrands.SelectedIndex];
             aux.Category = categories[cbCategories.SelectedIndex];
             aux.Images = images;
-            if(ItemBusiness.Add(aux) == 1) {
+            if (ItemBusiness.Add(aux) == 1)
+            {
                 textBoxID.Text = (aux.Id + 1).ToString();
             }
-            
             updateItemList.Invoke();
-
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
+            this.buttonAddItem.Visible = false;
+            this.buttonApplyItem.Visible = false;
             this.Close();
-        }
-
-        private void textBoxBrand_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonSaveItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void NumbersOnly(object sender, KeyPressEventArgs e)
@@ -162,6 +136,5 @@ namespace App_WinForms
                 e.Handled = true;
             }
         }
-        
     }
 }

@@ -15,15 +15,7 @@ namespace Domain
         [DisplayName("Id")]
         public int Id { get; set; }
         [DisplayName("Descripción")]
-        public string Description
-        {
-            get { return description; }
-            set
-            {
-                if (value.Length < 50 && value.Length > 0) description = value;
-                else description = "error";
-            }
-        }
+        public string Description { get; set; }
         public override string ToString()
         {
             return Description;

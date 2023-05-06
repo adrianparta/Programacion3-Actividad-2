@@ -42,13 +42,13 @@
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
             this.pictureBoxImages = new System.Windows.Forms.PictureBox();
-            this.buttonSaveItem = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApplyItem = new System.Windows.Forms.Button();
             this.buttonNextImage = new System.Windows.Forms.Button();
             this.buttonPreviousImage = new System.Windows.Forms.Button();
             this.cbBrands = new System.Windows.Forms.ComboBox();
             this.cbCategories = new System.Windows.Forms.ComboBox();
+            this.buttonAddItem = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +69,6 @@
             this.labelName.Size = new System.Drawing.Size(47, 13);
             this.labelName.TabIndex = 1;
             this.labelName.Text = "Nombre:";
-            this.labelName.Click += new System.EventHandler(this.labelName_Click);
             // 
             // labelDescription
             // 
@@ -79,7 +78,6 @@
             this.labelDescription.Size = new System.Drawing.Size(66, 13);
             this.labelDescription.TabIndex = 2;
             this.labelDescription.Text = "Descripción:";
-            this.labelDescription.Click += new System.EventHandler(this.labelDescription_Click);
             // 
             // labelCode
             // 
@@ -133,7 +131,6 @@
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(173, 20);
             this.textBoxCode.TabIndex = 8;
-            this.textBoxCode.TextChanged += new System.EventHandler(this.textBoxCode_TextChanged);
             // 
             // textBoxID
             // 
@@ -164,6 +161,7 @@
             // textBoxPrice
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(353, 110);
+            this.textBoxPrice.MaxLength = 50;
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(173, 20);
             this.textBoxPrice.TabIndex = 15;
@@ -179,16 +177,6 @@
             this.pictureBoxImages.TabIndex = 16;
             this.pictureBoxImages.TabStop = false;
             // 
-            // buttonSaveItem
-            // 
-            this.buttonSaveItem.Location = new System.Drawing.Point(370, 305);
-            this.buttonSaveItem.Name = "buttonSaveItem";
-            this.buttonSaveItem.Size = new System.Drawing.Size(75, 23);
-            this.buttonSaveItem.TabIndex = 17;
-            this.buttonSaveItem.Text = "Guardar";
-            this.buttonSaveItem.UseVisualStyleBackColor = true;
-            this.buttonSaveItem.Click += new System.EventHandler(this.buttonSaveItem_Click);
-            // 
             // buttonCancel
             // 
             this.buttonCancel.Location = new System.Drawing.Point(451, 305);
@@ -201,12 +189,13 @@
             // 
             // buttonApplyItem
             // 
-            this.buttonApplyItem.Location = new System.Drawing.Point(289, 305);
+            this.buttonApplyItem.Location = new System.Drawing.Point(346, 305);
             this.buttonApplyItem.Name = "buttonApplyItem";
-            this.buttonApplyItem.Size = new System.Drawing.Size(75, 23);
+            this.buttonApplyItem.Size = new System.Drawing.Size(99, 23);
             this.buttonApplyItem.TabIndex = 19;
-            this.buttonApplyItem.Text = "Aplicar";
+            this.buttonApplyItem.Text = "Aplicar Cambios";
             this.buttonApplyItem.UseVisualStyleBackColor = true;
+            this.buttonApplyItem.Visible = false;
             this.buttonApplyItem.Click += new System.EventHandler(this.buttonApplyItem_Click);
             // 
             // buttonNextImage
@@ -247,18 +236,28 @@
             this.cbCategories.Size = new System.Drawing.Size(173, 21);
             this.cbCategories.TabIndex = 23;
             // 
+            // buttonAddItem
+            // 
+            this.buttonAddItem.Location = new System.Drawing.Point(370, 305);
+            this.buttonAddItem.Name = "buttonAddItem";
+            this.buttonAddItem.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddItem.TabIndex = 24;
+            this.buttonAddItem.Text = "Añadir";
+            this.buttonAddItem.UseVisualStyleBackColor = true;
+            this.buttonAddItem.Visible = false;
+            // 
             // ItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 362);
+            this.Controls.Add(this.buttonAddItem);
             this.Controls.Add(this.cbCategories);
             this.Controls.Add(this.cbBrands);
             this.Controls.Add(this.buttonPreviousImage);
             this.Controls.Add(this.buttonNextImage);
             this.Controls.Add(this.buttonApplyItem);
             this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonSaveItem);
             this.Controls.Add(this.pictureBoxImages);
             this.Controls.Add(this.textBoxPrice);
             this.Controls.Add(this.textBoxDescription);
@@ -275,7 +274,6 @@
             this.Controls.Add(this.labelID);
             this.Name = "ItemDetails";
             this.Text = "Detalles del producto";
-            this.Load += new System.EventHandler(this.ItemDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -298,12 +296,12 @@
         private System.Windows.Forms.RichTextBox textBoxDescription;
         private System.Windows.Forms.TextBox textBoxPrice;
         private System.Windows.Forms.PictureBox pictureBoxImages;
-        private System.Windows.Forms.Button buttonSaveItem;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Button buttonApplyItem;
         private System.Windows.Forms.Button buttonNextImage;
         private System.Windows.Forms.Button buttonPreviousImage;
         private System.Windows.Forms.ComboBox cbBrands;
         private System.Windows.Forms.ComboBox cbCategories;
+        private System.Windows.Forms.Button buttonAddItem;
     }
 }

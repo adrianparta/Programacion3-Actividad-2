@@ -110,7 +110,7 @@ namespace App_WinForms
             aux.Description = textBoxDescription.Text;
             //TODO: Ver como solucionar esto con la clase money y que se cargue bien en la base de datos
             //Money price = decimal.Parse(textBoxPrice.Text);
-            //aux.Price = price;
+            aux.Price = textBoxPrice.Text;
             aux.Brand = brands[cbBrands.SelectedIndex];
             aux.Category = categories[cbCategories.SelectedIndex];
             aux.Images = images;
@@ -131,9 +131,12 @@ namespace App_WinForms
         private void NumbersOnly(object sender, KeyPressEventArgs e)
         {
             // Evita que se ingresen letras en el text box
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
             {
-                e.Handled = true;
+                if(!(((TextBox)sender).Text.Contains(",") && e.KeyChar == ','))
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

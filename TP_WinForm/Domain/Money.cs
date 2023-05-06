@@ -31,6 +31,12 @@ namespace Domain
         {
             return !(money == obj);
         }
+        public static implicit operator Money(string numStr)
+        {
+            numStr = numStr.Replace("$","").Replace(".","").Trim();
+            decimal.TryParse(numStr, out decimal num);
+            return new Money(num);
+        }
         public static implicit operator Money(int num)
         {       
             return new Money(num);        

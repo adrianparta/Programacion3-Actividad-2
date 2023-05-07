@@ -148,13 +148,13 @@
             // 
             // textBoxID
             // 
-            this.textBoxID.BackColor = System.Drawing.SystemColors.Info;
-            this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxID.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBoxID.Location = new System.Drawing.Point(100, 30);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.ReadOnly = true;
-            this.textBoxID.Size = new System.Drawing.Size(55, 13);
+            this.textBoxID.Size = new System.Drawing.Size(55, 20);
             this.textBoxID.TabIndex = 9;
+            this.textBoxID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBoxName
             // 

@@ -40,7 +40,9 @@ namespace App_WinForms
 
                 if (images.Count > 0)
                 {
-                    LoadImage(images[UrlIndex].Url);
+                    string imageUrl = images[UrlIndex].Url;
+                    LoadImage(imageUrl);
+                    textBoxImageUrl.Text = imageUrl;
                 }
             }
             else

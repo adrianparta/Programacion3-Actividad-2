@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ItemDetails));
             this.labelID = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
@@ -41,14 +42,18 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
             this.textBoxPrice = new System.Windows.Forms.TextBox();
-            this.pictureBoxImages = new System.Windows.Forms.PictureBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonApplyItem = new System.Windows.Forms.Button();
-            this.buttonNextImage = new System.Windows.Forms.Button();
             this.buttonPreviousImage = new System.Windows.Forms.Button();
             this.cbBrands = new System.Windows.Forms.ComboBox();
             this.cbCategories = new System.Windows.Forms.ComboBox();
             this.buttonAddItem = new System.Windows.Forms.Button();
+            this.buttonNextImage = new System.Windows.Forms.Button();
+            this.buttonDeleteUrl = new System.Windows.Forms.Button();
+            this.buttonEditUrl = new System.Windows.Forms.Button();
+            this.buttonAddUrl = new System.Windows.Forms.Button();
+            this.pictureBoxImages = new System.Windows.Forms.PictureBox();
+            this.textBoxImageUrl = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +78,7 @@
             // labelDescription
             // 
             this.labelDescription.AutoSize = true;
-            this.labelDescription.Location = new System.Drawing.Point(30, 150);
+            this.labelDescription.Location = new System.Drawing.Point(353, 146);
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(66, 13);
             this.labelDescription.TabIndex = 2;
@@ -118,11 +123,11 @@
             // labelImages
             // 
             this.labelImages.AutoSize = true;
-            this.labelImages.Location = new System.Drawing.Point(290, 150);
+            this.labelImages.Location = new System.Drawing.Point(23, 314);
             this.labelImages.Name = "labelImages";
-            this.labelImages.Size = new System.Drawing.Size(56, 13);
+            this.labelImages.Size = new System.Drawing.Size(23, 13);
             this.labelImages.TabIndex = 7;
-            this.labelImages.Text = "Imágenes:";
+            this.labelImages.Text = "Url:";
             // 
             // textBoxCode
             // 
@@ -134,6 +139,7 @@
             // 
             // textBoxID
             // 
+            this.textBoxID.BackColor = System.Drawing.SystemColors.Info;
             this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxID.Location = new System.Drawing.Point(100, 30);
             this.textBoxID.Name = "textBoxID";
@@ -151,10 +157,10 @@
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(30, 190);
+            this.textBoxDescription.Location = new System.Drawing.Point(353, 170);
             this.textBoxDescription.MaxLength = 50;
             this.textBoxDescription.Name = "textBoxDescription";
-            this.textBoxDescription.Size = new System.Drawing.Size(243, 100);
+            this.textBoxDescription.Size = new System.Drawing.Size(173, 80);
             this.textBoxDescription.TabIndex = 12;
             this.textBoxDescription.Text = "";
             // 
@@ -167,21 +173,11 @@
             this.textBoxPrice.TabIndex = 15;
             this.textBoxPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumbersOnly);
             // 
-            // pictureBoxImages
-            // 
-            this.pictureBoxImages.Image = global::App_WinForms.Properties.Resources.ErrorImage;
-            this.pictureBoxImages.Location = new System.Drawing.Point(305, 190);
-            this.pictureBoxImages.Name = "pictureBoxImages";
-            this.pictureBoxImages.Size = new System.Drawing.Size(221, 116);
-            this.pictureBoxImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxImages.TabIndex = 16;
-            this.pictureBoxImages.TabStop = false;
-            // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(451, 333);
+            this.buttonCancel.Location = new System.Drawing.Point(437, 296);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.Size = new System.Drawing.Size(75, 35);
             this.buttonCancel.TabIndex = 18;
             this.buttonCancel.Text = "Cancelar";
             this.buttonCancel.UseVisualStyleBackColor = true;
@@ -189,30 +185,20 @@
             // 
             // buttonApplyItem
             // 
-            this.buttonApplyItem.Location = new System.Drawing.Point(346, 333);
+            this.buttonApplyItem.Location = new System.Drawing.Point(336, 296);
             this.buttonApplyItem.Name = "buttonApplyItem";
-            this.buttonApplyItem.Size = new System.Drawing.Size(99, 23);
+            this.buttonApplyItem.Size = new System.Drawing.Size(95, 35);
             this.buttonApplyItem.TabIndex = 19;
             this.buttonApplyItem.Text = "Aplicar Cambios";
             this.buttonApplyItem.UseVisualStyleBackColor = true;
             this.buttonApplyItem.Visible = false;
             this.buttonApplyItem.Click += new System.EventHandler(this.buttonApplyItem_Click);
             // 
-            // buttonNextImage
-            // 
-            this.buttonNextImage.Location = new System.Drawing.Point(532, 190);
-            this.buttonNextImage.Name = "buttonNextImage";
-            this.buttonNextImage.Size = new System.Drawing.Size(27, 23);
-            this.buttonNextImage.TabIndex = 20;
-            this.buttonNextImage.Text = "→";
-            this.buttonNextImage.UseVisualStyleBackColor = true;
-            this.buttonNextImage.Click += new System.EventHandler(this.buttonNextImage_Click);
-            // 
             // buttonPreviousImage
             // 
-            this.buttonPreviousImage.Location = new System.Drawing.Point(532, 219);
+            this.buttonPreviousImage.Location = new System.Drawing.Point(279, 181);
             this.buttonPreviousImage.Name = "buttonPreviousImage";
-            this.buttonPreviousImage.Size = new System.Drawing.Size(27, 23);
+            this.buttonPreviousImage.Size = new System.Drawing.Size(27, 27);
             this.buttonPreviousImage.TabIndex = 21;
             this.buttonPreviousImage.Text = "←";
             this.buttonPreviousImage.UseVisualStyleBackColor = true;
@@ -238,19 +224,79 @@
             // 
             // buttonAddItem
             // 
-            this.buttonAddItem.Location = new System.Drawing.Point(370, 333);
+            this.buttonAddItem.Location = new System.Drawing.Point(356, 296);
             this.buttonAddItem.Name = "buttonAddItem";
-            this.buttonAddItem.Size = new System.Drawing.Size(75, 23);
+            this.buttonAddItem.Size = new System.Drawing.Size(75, 35);
             this.buttonAddItem.TabIndex = 24;
             this.buttonAddItem.Text = "Añadir";
             this.buttonAddItem.UseVisualStyleBackColor = true;
             this.buttonAddItem.Visible = false;
             // 
+            // buttonNextImage
+            // 
+            this.buttonNextImage.Location = new System.Drawing.Point(279, 148);
+            this.buttonNextImage.Name = "buttonNextImage";
+            this.buttonNextImage.Size = new System.Drawing.Size(27, 27);
+            this.buttonNextImage.TabIndex = 20;
+            this.buttonNextImage.Text = "→";
+            this.buttonNextImage.UseVisualStyleBackColor = true;
+            this.buttonNextImage.Click += new System.EventHandler(this.buttonNextImage_Click);
+            // 
+            // buttonDeleteUrl
+            // 
+            this.buttonDeleteUrl.Image = global::App_WinForms.Properties.Resources.delete;
+            this.buttonDeleteUrl.Location = new System.Drawing.Point(279, 278);
+            this.buttonDeleteUrl.Name = "buttonDeleteUrl";
+            this.buttonDeleteUrl.Size = new System.Drawing.Size(27, 27);
+            this.buttonDeleteUrl.TabIndex = 27;
+            this.buttonDeleteUrl.UseVisualStyleBackColor = true;
+            // 
+            // buttonEditUrl
+            // 
+            this.buttonEditUrl.Image = global::App_WinForms.Properties.Resources.edit;
+            this.buttonEditUrl.Location = new System.Drawing.Point(279, 245);
+            this.buttonEditUrl.Name = "buttonEditUrl";
+            this.buttonEditUrl.Size = new System.Drawing.Size(27, 27);
+            this.buttonEditUrl.TabIndex = 26;
+            this.buttonEditUrl.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddUrl
+            // 
+            this.buttonAddUrl.Image = ((System.Drawing.Image)(resources.GetObject("buttonAddUrl.Image")));
+            this.buttonAddUrl.Location = new System.Drawing.Point(279, 214);
+            this.buttonAddUrl.Name = "buttonAddUrl";
+            this.buttonAddUrl.Size = new System.Drawing.Size(27, 27);
+            this.buttonAddUrl.TabIndex = 25;
+            this.buttonAddUrl.UseVisualStyleBackColor = true;
+            // 
+            // pictureBoxImages
+            // 
+            this.pictureBoxImages.Image = global::App_WinForms.Properties.Resources.ErrorImage;
+            this.pictureBoxImages.Location = new System.Drawing.Point(52, 148);
+            this.pictureBoxImages.Name = "pictureBoxImages";
+            this.pictureBoxImages.Size = new System.Drawing.Size(221, 157);
+            this.pictureBoxImages.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxImages.TabIndex = 16;
+            this.pictureBoxImages.TabStop = false;
+            // 
+            // textBoxImageUrl
+            // 
+            this.textBoxImageUrl.Location = new System.Drawing.Point(52, 311);
+            this.textBoxImageUrl.MaxLength = 50;
+            this.textBoxImageUrl.Name = "textBoxImageUrl";
+            this.textBoxImageUrl.ReadOnly = true;
+            this.textBoxImageUrl.Size = new System.Drawing.Size(254, 20);
+            this.textBoxImageUrl.TabIndex = 28;
+            // 
             // ItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(590, 405);
+            this.ClientSize = new System.Drawing.Size(566, 357);
+            this.Controls.Add(this.textBoxImageUrl);
+            this.Controls.Add(this.buttonDeleteUrl);
+            this.Controls.Add(this.buttonEditUrl);
+            this.Controls.Add(this.buttonAddUrl);
             this.Controls.Add(this.buttonAddItem);
             this.Controls.Add(this.cbCategories);
             this.Controls.Add(this.cbBrands);
@@ -304,5 +350,9 @@
         private System.Windows.Forms.ComboBox cbBrands;
         private System.Windows.Forms.ComboBox cbCategories;
         private System.Windows.Forms.Button buttonAddItem;
+        private System.Windows.Forms.Button buttonAddUrl;
+        private System.Windows.Forms.Button buttonEditUrl;
+        private System.Windows.Forms.Button buttonDeleteUrl;
+        private System.Windows.Forms.TextBox textBoxImageUrl;
     }
 }

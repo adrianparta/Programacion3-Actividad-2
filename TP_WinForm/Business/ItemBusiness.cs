@@ -73,7 +73,6 @@ namespace Business
         }
         public static int Add(Item item)
         {
-            decimal temporalPrice = 10;
             AccessData data = new AccessData();
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
@@ -102,7 +101,7 @@ namespace Business
                 {
                     price = "Precio,";
                     values += $"@{price}";
-                    parameters.Add(new SqlParameter("@Precio", temporalPrice));
+                    parameters.Add(new SqlParameter("@Precio", item.Price.Price));
                 }
                 string query = $@"
                     DECLARE @IdGenerado int

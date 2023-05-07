@@ -20,9 +20,7 @@ namespace App_WinForms
         int UrlIndex = 0;
         public delegate void UpdateItemList();
         public UpdateItemList updateItemList;
-
-
-
+        private const string NotAssigned = "Sin Asignar";
 
         public ItemDetails(List<Category> categories, List<Brand> brands, Item item = null)
         {
@@ -47,26 +45,45 @@ namespace App_WinForms
             }
             else
             {
+                images = new List<Image>();
                 this.buttonAddItem.Visible = true;
                 this.textBoxID.Text = (ItemBusiness.GetMaxID() + 1).ToString();
             }
             this.categories = categories;
             this.brands = brands;
+            cbCategories.Items.Add(NotAssigned);
+            cbBrands.Items.Add(NotAssigned);
             foreach (var category in this.categories)
             {
-                cbCategories.Items.Add(category.Description);
+                cbCategories.Items.Add(category);
             }
             if (item != null)
             {
-                cbCategories.SelectedIndex = cbCategories.FindStringExact(item.Category.ToString());
+                int findCategory = cbCategories.FindStringExact(item.Category.ToString());
+                if (findCategory > 0)
+                {
+                    cbCategories.SelectedIndex = findCategory;
+                }
+                else
+                {
+                    cbCategories.SelectedIndex = 0;
+                }
             }
             foreach (var brand in this.brands)
             {
-                cbBrands.Items.Add(brand.Description);
+                cbBrands.Items.Add(brand);
             }
             if (item != null)
             {
-                cbBrands.SelectedIndex = cbBrands.FindStringExact(item.Brand.ToString());
+                int findBrand = cbBrands.FindStringExact(item.Brand.ToString());
+                if(findBrand > 0)
+                {
+                    cbBrands.SelectedIndex = findBrand;
+                }
+                else
+                {
+                    cbBrands.SelectedIndex = 0;
+                }
             }
             updateItemList += TPWinforms.UpdateItemList;
         }
@@ -104,27 +121,33 @@ namespace App_WinForms
 
         private void buttonApplyItem_Click(object sender, EventArgs e)
         {
-
-            // TODO: 
-            Item aux = new Item();
-                aux.Id = Convert.ToInt32(textBoxID.Text);
-                aux.Code = textBoxCode.Text;
-                aux.Name = textBoxName.Text;
-                aux.Description = textBoxDescription.Text;
-                aux.Price = textBoxPrice.Text;
-                aux.Brand = brands[cbBrands.SelectedIndex];
-                aux.Category = categories[cbCategories.SelectedIndex];
-                aux.Images = images;
-           
-            if (ItemBusiness.Update(item, aux) == 1)
+            Money newPrice = textBoxPrice.Text;
+            if(newPrice > 0)
             {
-                MessageBox.Show("Se ha actualizado correctamente");
+                Item aux = new Item
+                {
+                    Id = Convert.ToInt32(textBoxID.Text),
+                    Code = textBoxCode.Text,
+                    Name = textBoxName.Text,
+                    Description = textBoxDescription.Text,
+                    Price = textBoxPrice.Text,
+                    Brand = cbBrands.SelectedItem is Brand ? (Brand)cbBrands.SelectedItem : new Brand() { Id = -1 },
+                    Category = cbCategories.SelectedItem is Category ? (Category)cbCategories.SelectedItem : new Category() { Id = -1 },
+                    Images = images
+                };
+                if (ItemBusiness.Update(item, aux) == 1)
+                {
+                    MessageBox.Show("Se ha actualizado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se han aplicado actualizaciones");
+                }
             }
             else
             {
-                MessageBox.Show("No se han aplicado actualizaciones");
+                MessageBox.Show("No ingresó un precio válido");
             }
-            updateItemList.Invoke();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -144,6 +167,34 @@ namespace App_WinForms
                     e.Handled = true;
                 }
             }
+        }
+
+        private void buttonAddItem_Click(object sender, EventArgs e)
+        {
+            Item aux = new Item
+            {
+                Id = Convert.ToInt32(textBoxID.Text),
+                Code = textBoxCode.Text,
+                Name = textBoxName.Text,
+                Description = textBoxDescription.Text,
+                Price = string.IsNullOrWhiteSpace(textBoxPrice.Text) ? "0" : textBoxPrice.Text,
+                Brand = cbBrands.SelectedItem is Brand ? (Brand)cbBrands.SelectedItem : new Brand() { Id = -1 },
+                Category = cbCategories.SelectedItem is Category ? (Category)cbCategories.SelectedItem : new Category() { Id = -1 },
+                Images = images
+            };
+            if (ItemBusiness.Add(aux) == 1)
+            {
+                MessageBox.Show("Se ha agregado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se pudo agregar el item");
+            }
+        }
+
+        private void ItemDetails_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            updateItemList.Invoke();
         }
     }
 }

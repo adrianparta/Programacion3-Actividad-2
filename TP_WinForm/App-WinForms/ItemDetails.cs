@@ -8,6 +8,7 @@ using System.Runtime.Remoting.Proxies;
 using System.Windows.Forms;
 using Business;
 using Domain;
+using static System.Windows.Forms.AxHost;
 
 namespace App_WinForms
 {
@@ -42,13 +43,11 @@ namespace App_WinForms
 
                 if (images.Count > 0)
                 {
-                    string imageUrl = images[UrlIndex].Url;
-                    LoadImage(imageUrl);
-                    textBoxImageUrl.Text = imageUrl;
+                    LoadImage();
                 }
                 else
                 {
-                    buttonNextImage.Enabled= false;
+                    NextPreviousButtonState(false);
                     buttonEditUrl.Enabled=false;
                     buttonPreviousImage.Enabled= false;
                 }
@@ -78,11 +77,13 @@ namespace App_WinForms
             }
             updateItemList += TPWinforms.UpdateItemList;
         }
-        private void LoadImage(string url)
+        private void LoadImage()
         {
             try
             {
-                this.pictureBoxImages.Load(url);
+                textBoxImageUrl.Text = images[UrlIndex].Url;
+                
+                this.pictureBoxImages.Load(images[UrlIndex].Url);
             }
             catch
             {
@@ -97,8 +98,7 @@ namespace App_WinForms
             {
                 UrlIndex = 0;
             }
-            textBoxImageUrl.Text = images[UrlIndex].Url;
-            LoadImage(images[UrlIndex].Url);
+            LoadImage();
         }
 
         private void buttonPreviousImage_Click(object sender, EventArgs e)
@@ -108,8 +108,7 @@ namespace App_WinForms
             {
                 UrlIndex = images.Count - 1;
             }
-            textBoxImageUrl.Text = images[UrlIndex].Url;
-            LoadImage(images[UrlIndex].Url);
+            LoadImage();
         }
 
         private void buttonApplyItem_Click(object sender, EventArgs e)
@@ -181,42 +180,87 @@ namespace App_WinForms
 
         private void buttonAddUrl_Click(object sender, EventArgs e)
         {
-            textBoxImageUrl.Enabled = true;
+            NextPreviousButtonState(false);
+            ImageButtonsState(false);
             modifyUrl = false;
-            buttonApplyUrl.Enabled = true;
             textBoxImageUrl.Text = string.Empty;
-            textBoxImageUrl.ReadOnly = false;
         }
         private void buttonEditUrl_Click(object sender, EventArgs e)
         {
-            textBoxImageUrl.Enabled = true;
+            NextPreviousButtonState(false);
+            ImageButtonsState(false);
             modifyUrl = true;
-            buttonApplyUrl.Enabled = true;
-            textBoxImageUrl.ReadOnly = false;
         }
 
         private void buttonApplyUrl_Click(object sender, EventArgs e)
         {
+            ImageButtonsState(true);
+            NextPreviousButtonState(true);
             if (modifyUrl)
             {
+                if (textBoxImageUrl.Text == images[UrlIndex].Url)
+                {
+                    return;
+                }
+                if (textBoxImageUrl.Text == "")
+                {
+                    MessageBox.Show("No se puede dejar el campo vacío, si desea eliminar la imagen, haga click en el botón correspondiente");
+                    textBoxImageUrl.Text = images[UrlIndex].Url;
+                    return;
+                }
+                if (MessageBox.Show($"¿Seguro desea modificar esta url?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                {
+                    textBoxImageUrl.Text = images[UrlIndex].Url;
+                    textBoxImageUrl.ReadOnly = true;
+                    //buttonApplyUrl.Enabled = false;
+                    return;
+                }
                 images[UrlIndex].Url = textBoxImageUrl.Text;
-                buttonEditUrl.Enabled = true;
+                //buttonEditUrl.Enabled = true;
+
             }
-            else
+            else if (textBoxImageUrl.Text != "")
             {
                 Image image = new Image();
                 image.Url = textBoxImageUrl.Text;
                 images.Add(image);
                 UrlIndex = images.Count - 1;
+                NextPreviousButtonState(true);
+                //buttonDeleteUrl.Enabled = true;
             }
-            LoadImage(images[UrlIndex].Url);
-            buttonApplyUrl.Enabled = false;
-            textBoxImageUrl.ReadOnly = true;
+            LoadImage();
         }
 
         private void buttonDeleteUrl_Click(object sender, EventArgs e)
         {
+            if(MessageBox.Show($"¿Seguro desea eliminar esta imagen?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                images.RemoveAt(UrlIndex);
+            }
+            if (images.Count > 0)
+            {
+                LoadImage();
+                return;
+            }
 
+            textBoxImageUrl.Text = string.Empty;
+            pictureBoxImages.Image = null;
+            NextPreviousButtonState(false);
+            buttonDeleteUrl.Enabled = false;
+            buttonEditUrl.Enabled = false;
+        }
+        private void NextPreviousButtonState(bool state)
+        {
+            buttonNextImage.Enabled = state;
+            buttonPreviousImage.Enabled = state;
+        }
+        private void ImageButtonsState(bool state)
+        {
+            buttonApplyUrl.Enabled = !state;
+            textBoxImageUrl.ReadOnly = state;
+            buttonEditUrl.Enabled = state;
+            buttonDeleteUrl.Enabled = state;
+            buttonAddUrl.Enabled = state;
         }
     }
 }

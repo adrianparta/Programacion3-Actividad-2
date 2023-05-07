@@ -77,12 +77,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VerifyChanges.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VerifyChanges.Designer.cs">
-      <DependentUpon>VerifyChanges.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BrandList.resx">
       <DependentUpon>BrandList.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,9 +93,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VerifyChanges.resx">
-      <DependentUpon>VerifyChanges.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

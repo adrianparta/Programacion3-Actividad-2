@@ -125,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Icons\add.png" />
+    <Content Include="Resources\Icons\check.png" />
     <Content Include="Resources\Icons\delete.png" />
     <Content Include="Resources\Icons\edit.png" />
     <Content Include="Resources\Icons\next.png" />

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App-WinForms", "App-WinForms\App-WinForms.csproj", "{C0D28031-2CFA-4CFC-896B-0E1AB070B585}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPWinForm_equipo-13", "App-WinForms\TPWinForm_equipo-13.csproj", "{C0D28031-2CFA-4CFC-896B-0E1AB070B585}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{5A1EDC1B-7862-4402-A380-912A328F4F5A}"
 EndProject

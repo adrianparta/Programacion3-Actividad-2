@@ -49,11 +49,12 @@
             this.cbCategories = new System.Windows.Forms.ComboBox();
             this.buttonAddItem = new System.Windows.Forms.Button();
             this.buttonNextImage = new System.Windows.Forms.Button();
+            this.textBoxImageUrl = new System.Windows.Forms.TextBox();
+            this.buttonApplyUrl = new System.Windows.Forms.Button();
             this.buttonDeleteUrl = new System.Windows.Forms.Button();
             this.buttonEditUrl = new System.Windows.Forms.Button();
             this.buttonAddUrl = new System.Windows.Forms.Button();
             this.pictureBoxImages = new System.Windows.Forms.PictureBox();
-            this.textBoxImageUrl = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImages)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,7 +132,7 @@
             // 
             // textBoxCode
             // 
-            this.textBoxCode.Location = new System.Drawing.Point(100, 70);
+            this.textBoxCode.Location = new System.Drawing.Point(100, 67);
             this.textBoxCode.MaxLength = 50;
             this.textBoxCode.Name = "textBoxCode";
             this.textBoxCode.Size = new System.Drawing.Size(173, 20);
@@ -243,6 +244,25 @@
             this.buttonNextImage.UseVisualStyleBackColor = true;
             this.buttonNextImage.Click += new System.EventHandler(this.buttonNextImage_Click);
             // 
+            // textBoxImageUrl
+            // 
+            this.textBoxImageUrl.Location = new System.Drawing.Point(52, 311);
+            this.textBoxImageUrl.MaxLength = 50;
+            this.textBoxImageUrl.Name = "textBoxImageUrl";
+            this.textBoxImageUrl.ReadOnly = true;
+            this.textBoxImageUrl.Size = new System.Drawing.Size(221, 20);
+            this.textBoxImageUrl.TabIndex = 28;
+            // 
+            // buttonApplyUrl
+            // 
+            this.buttonApplyUrl.Image = global::App_WinForms.Properties.Resources.check;
+            this.buttonApplyUrl.Location = new System.Drawing.Point(279, 307);
+            this.buttonApplyUrl.Name = "buttonApplyUrl";
+            this.buttonApplyUrl.Size = new System.Drawing.Size(27, 27);
+            this.buttonApplyUrl.TabIndex = 29;
+            this.buttonApplyUrl.UseVisualStyleBackColor = true;
+            this.buttonApplyUrl.Click += new System.EventHandler(this.buttonApplyUrl_Click);
+            // 
             // buttonDeleteUrl
             // 
             this.buttonDeleteUrl.Image = global::App_WinForms.Properties.Resources.delete;
@@ -251,6 +271,7 @@
             this.buttonDeleteUrl.Size = new System.Drawing.Size(27, 27);
             this.buttonDeleteUrl.TabIndex = 27;
             this.buttonDeleteUrl.UseVisualStyleBackColor = true;
+            this.buttonDeleteUrl.Click += new System.EventHandler(this.buttonDeleteUrl_Click);
             // 
             // buttonEditUrl
             // 
@@ -260,6 +281,7 @@
             this.buttonEditUrl.Size = new System.Drawing.Size(27, 27);
             this.buttonEditUrl.TabIndex = 26;
             this.buttonEditUrl.UseVisualStyleBackColor = true;
+            this.buttonEditUrl.Click += new System.EventHandler(this.buttonEditUrl_Click);
             // 
             // buttonAddUrl
             // 
@@ -269,6 +291,7 @@
             this.buttonAddUrl.Size = new System.Drawing.Size(27, 27);
             this.buttonAddUrl.TabIndex = 25;
             this.buttonAddUrl.UseVisualStyleBackColor = true;
+            this.buttonAddUrl.Click += new System.EventHandler(this.buttonAddUrl_Click);
             // 
             // pictureBoxImages
             // 
@@ -280,20 +303,12 @@
             this.pictureBoxImages.TabIndex = 16;
             this.pictureBoxImages.TabStop = false;
             // 
-            // textBoxImageUrl
-            // 
-            this.textBoxImageUrl.Location = new System.Drawing.Point(52, 311);
-            this.textBoxImageUrl.MaxLength = 50;
-            this.textBoxImageUrl.Name = "textBoxImageUrl";
-            this.textBoxImageUrl.ReadOnly = true;
-            this.textBoxImageUrl.Size = new System.Drawing.Size(254, 20);
-            this.textBoxImageUrl.TabIndex = 28;
-            // 
             // ItemDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 357);
+            this.Controls.Add(this.buttonApplyUrl);
             this.Controls.Add(this.textBoxImageUrl);
             this.Controls.Add(this.buttonDeleteUrl);
             this.Controls.Add(this.buttonEditUrl);
@@ -355,5 +370,6 @@
         private System.Windows.Forms.Button buttonEditUrl;
         private System.Windows.Forms.Button buttonDeleteUrl;
         private System.Windows.Forms.TextBox textBoxImageUrl;
+        private System.Windows.Forms.Button buttonApplyUrl;
     }
 }

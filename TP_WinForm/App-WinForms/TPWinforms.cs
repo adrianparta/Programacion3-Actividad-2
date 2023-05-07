@@ -32,10 +32,12 @@ namespace App_WinForms
 
         private void buttonViewDetails_Click(object sender, EventArgs e)
         {
-            if(dgvItems.SelectedRows.Count > 0)
+            if (dgvItems.SelectedRows.Count > 0)
             {
                 ItemDetails itemDetails = new ItemDetails(categoryList, brandList, (Item)dgvItems.SelectedRows[0].DataBoundItem);
+                itemDetails.Text = "Detalles del artículo";
                 itemDetails.ShowDialog();
+
             }
             else
             {
@@ -46,6 +48,7 @@ namespace App_WinForms
         private void buttonAddItem_Click(object sender, EventArgs e)
         {
             ItemDetails itemDetails = new ItemDetails(categoryList, brandList);
+            itemDetails.Text = "Añadir nuevo artículo";
             itemDetails.ShowDialog();
         }
 
@@ -68,7 +71,7 @@ namespace App_WinForms
             List<Item> itemFilteredList = itemList;
             if (categoryFilter != null)
             {
-                if(categoryFilter.ToString() != WITHOUTFILTER)
+                if (categoryFilter.ToString() != WITHOUTFILTER)
                 {
                     itemFilteredList = itemFilteredList.Where(x => categoryFilter.ToString() == x.Category.ToString()).ToList();
                 }
@@ -137,12 +140,12 @@ namespace App_WinForms
 
         private void buttonDeleteItem_Click(object sender, EventArgs e)
         {
-            if(dgvItems.SelectedRows.Count > 0)
+            if (dgvItems.SelectedRows.Count > 0)
             {
                 Item item = (Item)dgvItems.SelectedRows[0].DataBoundItem;
                 if (MessageBox.Show($"Seguro desea eliminar {item.Name}", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if(ItemBusiness.Remove(item) > 0)
+                    if (ItemBusiness.Remove(item) > 0)
                     {
                         itemList.Remove(item);
                         dgvItems.DataSource = null;

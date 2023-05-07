@@ -17,7 +17,8 @@ namespace App_WinForms
         private List<Category> categories;
         private List<Brand> brands;
         private Item item;
-        int UrlIndex = 0;
+        private bool modifyUrl;
+        private int UrlIndex = 0;
         public delegate void UpdateItemList();
         public UpdateItemList updateItemList;
 
@@ -28,6 +29,7 @@ namespace App_WinForms
         {
             InitializeComponent();
             this.item = item;
+            buttonApplyUrl.Enabled = false;
             if (item != null)
             {
                 this.buttonApplyItem.Visible = true;
@@ -43,6 +45,12 @@ namespace App_WinForms
                     string imageUrl = images[UrlIndex].Url;
                     LoadImage(imageUrl);
                     textBoxImageUrl.Text = imageUrl;
+                }
+                else
+                {
+                    buttonNextImage.Enabled= false;
+                    buttonEditUrl.Enabled=false;
+                    buttonPreviousImage.Enabled= false;
                 }
             }
             else
@@ -89,6 +97,7 @@ namespace App_WinForms
             {
                 UrlIndex = 0;
             }
+            textBoxImageUrl.Text = images[UrlIndex].Url;
             LoadImage(images[UrlIndex].Url);
         }
 
@@ -99,6 +108,7 @@ namespace App_WinForms
             {
                 UrlIndex = images.Count - 1;
             }
+            textBoxImageUrl.Text = images[UrlIndex].Url;
             LoadImage(images[UrlIndex].Url);
         }
 
@@ -167,6 +177,46 @@ namespace App_WinForms
                 MessageBox.Show("No se han aplicado actualizaciones");
             }
             updateItemList.Invoke();
+        }
+
+        private void buttonAddUrl_Click(object sender, EventArgs e)
+        {
+            textBoxImageUrl.Enabled = true;
+            modifyUrl = false;
+            buttonApplyUrl.Enabled = true;
+            textBoxImageUrl.Text = string.Empty;
+            textBoxImageUrl.ReadOnly = false;
+        }
+        private void buttonEditUrl_Click(object sender, EventArgs e)
+        {
+            textBoxImageUrl.Enabled = true;
+            modifyUrl = true;
+            buttonApplyUrl.Enabled = true;
+            textBoxImageUrl.ReadOnly = false;
+        }
+
+        private void buttonApplyUrl_Click(object sender, EventArgs e)
+        {
+            if (modifyUrl)
+            {
+                images[UrlIndex].Url = textBoxImageUrl.Text;
+                buttonEditUrl.Enabled = true;
+            }
+            else
+            {
+                Image image = new Image();
+                image.Url = textBoxImageUrl.Text;
+                images.Add(image);
+                UrlIndex = images.Count - 1;
+            }
+            LoadImage(images[UrlIndex].Url);
+            buttonApplyUrl.Enabled = false;
+            textBoxImageUrl.ReadOnly = true;
+        }
+
+        private void buttonDeleteUrl_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

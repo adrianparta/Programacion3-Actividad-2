@@ -77,47 +77,44 @@ namespace Business
             List<SqlParameter> parameters = new List<SqlParameter>();
             try
             {
-                string code, name, description, price, values;
-                code = name = description = price = values = "";
+                string columns, values;
+                columns = values = "";
                 if (item.Code != null && item.Code != "")
                 {
-                    code = "Codigo,";
-                    values += $"@{code}";
+                    columns += "Codigo,";
+                    values += $"@Codigo,";
                     parameters.Add(new SqlParameter("@Codigo", item.Code));
                 }
                 if (item.Name != null && item.Name != "")
                 {
-                    name = "Nombre,";
-                    values += $"@{name}";
+                    columns += "Nombre,";
+                    values += $"@Nombre,";
                     parameters.Add(new SqlParameter("@Nombre", item.Name));
                 }
                 if (item.Description != null && item.Description != "")
                 {
-                    description = "Descripcion,";
-                    values += $"@{description}";
+                    columns += "Descripcion,";
+                    values += $"@Descripcion,";
                     parameters.Add(new SqlParameter("@Descripcion", item.Description));
                 }
                 if (!(item.Price is null))
                 {
-                    price = "Precio,";
-                    values += $"@{price}";
+                    columns += "Precio,";
+                    values += $"@Precio,";
                     parameters.Add(new SqlParameter("@Precio", item.Price.Price));
                 }
                 string query = $@"
                     DECLARE @IdGenerado int
 
                     INSERT INTO ARTICULOS 
-                        ({code}{name}{description}{price}IdMarca,IdCategoria)
+                        ({columns}IdMarca,IdCategoria)
                     VALUES
                         ({values}@BrandId,@CategoryId)
                     SET @IdGenerado = SCOPE_IDENTITY()
                     ";
-                //parameters.Add(new SqlParameter("@Code",item.Code));
-                //parameters.Add(new SqlParameter("@Name", item.Name));
-                //parameters.Add(new SqlParameter("@Description", item.Description));
+
                 parameters.Add(new SqlParameter("@BrandId", item.Brand.Id));
                 parameters.Add(new SqlParameter("@CategoryId", item.Category.Id));
-                //parameters.Add(new SqlParameter("@Price", temporalPrice));
 
                 int imagesCount = item.Images is null ? 0 : item.Images.Count;
                 if (imagesCount > 0)

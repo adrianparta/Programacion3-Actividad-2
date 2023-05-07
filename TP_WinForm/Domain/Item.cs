@@ -30,15 +30,7 @@ namespace Domain
         [DisplayName("Categoría")]
         public Category Category { get; set; }
         [DisplayName("Precio")]
-        public Money Price
-        {
-            get { return price; }
-            set
-            {
-                if (value > 0) price = value;
-                else price = -1;
-            }
-        }
+        public Money Price { get; set; }
         public List<Image> Images { get; set; }
     }
 }

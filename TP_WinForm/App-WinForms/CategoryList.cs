@@ -17,6 +17,8 @@ namespace App_WinForms
     {
         public delegate void UpdateCategoryList();
         public UpdateCategoryList updateCategoryList;
+        public delegate void UpdateItemList();
+        public UpdateItemList updateItemList;
         private Category categorySelected;
         private List<Category> lstCategory;
         public CategoryList()
@@ -31,6 +33,7 @@ namespace App_WinForms
         {
             dataGridViewCategories.DataSource = lstCategory;
             updateCategoryList += TPWinforms.UpdateCategoryList;
+            updateItemList += TPWinforms.UpdateItemList;
             UpdateDataGridViewCategory();
             if(lstCategory.Count > 0)
             {
@@ -41,6 +44,7 @@ namespace App_WinForms
         private void CategoryList_FormClosing(object sender, FormClosingEventArgs e)
         {
             updateCategoryList.Invoke();
+            updateItemList.Invoke();
         }
 
         private void dataGridViewCategories_CellClick(object sender, DataGridViewCellEventArgs e)

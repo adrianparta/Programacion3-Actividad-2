@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Net.Configuration;
 using System.Reflection;
@@ -26,6 +27,10 @@ namespace App_WinForms
         {
             InitializeComponent();
             this.item = item;
+            this.categories = categories;
+            this.brands = brands;
+            cbCategories.Items.Add(NotAssigned);
+            cbBrands.Items.Add(NotAssigned);
             if (item != null)
             {
                 this.buttonApplyItem.Visible = true;
@@ -46,13 +51,12 @@ namespace App_WinForms
             else
             {
                 images = new List<Image>();
+                cbCategories.SelectedIndex = 0;
+                cbBrands.SelectedIndex = 0;
                 this.buttonAddItem.Visible = true;
-                this.textBoxID.Text = (ItemBusiness.GetMaxID() + 1).ToString();
+                this.textBoxID.Visible = false;
+                this.labelID.Visible = false;
             }
-            this.categories = categories;
-            this.brands = brands;
-            cbCategories.Items.Add(NotAssigned);
-            cbBrands.Items.Add(NotAssigned);
             foreach (var category in this.categories)
             {
                 cbCategories.Items.Add(category);
@@ -126,7 +130,6 @@ namespace App_WinForms
             {
                 Item aux = new Item
                 {
-                    Id = Convert.ToInt32(textBoxID.Text),
                     Code = textBoxCode.Text,
                     Name = textBoxName.Text,
                     Description = textBoxDescription.Text,
@@ -171,27 +174,45 @@ namespace App_WinForms
 
         private void buttonAddItem_Click(object sender, EventArgs e)
         {
-            Item aux = new Item
+            if(AtLeastOneField())
             {
-                Id = Convert.ToInt32(textBoxID.Text),
-                Code = textBoxCode.Text,
-                Name = textBoxName.Text,
-                Description = textBoxDescription.Text,
-                Price = string.IsNullOrWhiteSpace(textBoxPrice.Text) ? "0" : textBoxPrice.Text,
-                Brand = cbBrands.SelectedItem is Brand ? (Brand)cbBrands.SelectedItem : new Brand() { Id = -1 },
-                Category = cbCategories.SelectedItem is Category ? (Category)cbCategories.SelectedItem : new Category() { Id = -1 },
-                Images = images
-            };
-            if (ItemBusiness.Add(aux) == 1)
-            {
-                MessageBox.Show("Se ha agregado correctamente");
+                Item aux = new Item
+                {
+                    Code = textBoxCode.Text,
+                    Name = textBoxName.Text,
+                    Description = textBoxDescription.Text,
+                    Price = string.IsNullOrWhiteSpace(textBoxPrice.Text) ? "0" : textBoxPrice.Text,
+                    Brand = cbBrands.SelectedItem is Brand ? (Brand)cbBrands.SelectedItem : new Brand() { Id = -1 },
+                    Category = cbCategories.SelectedItem is Category ? (Category)cbCategories.SelectedItem : new Category() { Id = -1 },
+                    Images = images
+                };
+                if (ItemBusiness.Add(aux) == 1)
+                {
+                    MessageBox.Show("Se ha agregado correctamente");
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar el item");
+                }
             }
             else
             {
-                MessageBox.Show("No se pudo agregar el item");
+                MessageBox.Show("Ingrese al menos un campo para tener referencia sobre que agrega");
             }
         }
+        private bool AtLeastOneField()
+        {
+            string verify = "";
+            verify += textBoxCode.Text;
+            verify += textBoxName.Text;
+            verify += textBoxDescription.Text;
+            verify += textBoxPrice.Text;
+            verify += cbBrands.SelectedItem is Brand ? cbBrands.SelectedItem.ToString() : "";
+            verify += cbCategories.SelectedItem is Category ? cbCategories.SelectedItem.ToString() : "";
+            verify += images.Count == 0 ? "" : images.Count.ToString();
 
+            return !string.IsNullOrWhiteSpace(verify);
+        }
         private void ItemDetails_FormClosing(object sender, FormClosingEventArgs e)
         {
             updateItemList.Invoke();

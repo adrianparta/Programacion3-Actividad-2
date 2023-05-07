@@ -18,6 +18,8 @@ namespace App_WinForms
     {
         public delegate void UpdateBrandList();
         public UpdateBrandList updateBrandList;
+        public delegate void UpdateItemList();
+        public UpdateItemList updateItemList;
         private Brand brandSelected;
         private List<Brand> lstBrand;
         public BrandList()
@@ -33,6 +35,7 @@ namespace App_WinForms
         {
             dataGridViewBrands.DataSource = lstBrand;
             updateBrandList += TPWinforms.UpdateBrandList;
+            updateItemList += TPWinforms.UpdateItemList;
             UpdateDataGridViewBrand();
             if (lstBrand.Count > 0)
             {
@@ -44,6 +47,7 @@ namespace App_WinForms
         private void BrandList_FormClosing(object sender, FormClosingEventArgs e)
         {
             updateBrandList.Invoke();
+            updateItemList.Invoke();
         }
 
         private void dataGridViewBrands_CellClick(object sender, DataGridViewCellEventArgs e)

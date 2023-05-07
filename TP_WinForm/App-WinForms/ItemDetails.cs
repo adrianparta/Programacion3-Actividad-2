@@ -145,5 +145,28 @@ namespace App_WinForms
                 }
             }
         }
+
+        private void buttonAddItem_Click(object sender, EventArgs e)
+        {
+            Item aux = new Item();
+            aux.Id = Convert.ToInt32(textBoxID.Text);
+            aux.Code = textBoxCode.Text;
+            aux.Name = textBoxName.Text;
+            aux.Description = textBoxDescription.Text;
+            aux.Price = textBoxPrice.Text;
+            aux.Brand = brands[cbBrands.SelectedIndex];
+            aux.Category = categories[cbCategories.SelectedIndex];
+            aux.Images = images;
+
+            if (ItemBusiness.Add(aux) == 1)
+            {
+                MessageBox.Show("Se ha actualizado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("No se han aplicado actualizaciones");
+            }
+            updateItemList.Invoke();
+        }
     }
 }

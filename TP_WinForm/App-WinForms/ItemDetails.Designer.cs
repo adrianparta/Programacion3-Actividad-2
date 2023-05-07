@@ -231,6 +231,7 @@
             this.buttonAddItem.Text = "Añadir";
             this.buttonAddItem.UseVisualStyleBackColor = true;
             this.buttonAddItem.Visible = false;
+            this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click);
             // 
             // buttonNextImage
             // 

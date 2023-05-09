@@ -47,11 +47,11 @@
             this.lblMax = new System.Windows.Forms.Label();
             this.numPriceMax = new System.Windows.Forms.NumericUpDown();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.buttonViewDetails = new FontAwesome.Sharp.IconButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonDeleteItem = new FontAwesome.Sharp.IconButton();
             this.buttonAddItem = new FontAwesome.Sharp.IconButton();
+            this.buttonDeleteItem = new FontAwesome.Sharp.IconButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonViewDetails = new FontAwesome.Sharp.IconButton();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPriceMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numPriceMax)).BeginInit();
@@ -62,12 +62,13 @@
             // 
             this.cbBrand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
             this.cbBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbBrand.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbBrand.ForeColor = System.Drawing.Color.LightGray;
             this.cbBrand.FormattingEnabled = true;
-            this.cbBrand.Location = new System.Drawing.Point(836, 34);
+            this.cbBrand.Location = new System.Drawing.Point(836, 41);
             this.cbBrand.Margin = new System.Windows.Forms.Padding(4);
             this.cbBrand.Name = "cbBrand";
-            this.cbBrand.Size = new System.Drawing.Size(169, 24);
+            this.cbBrand.Size = new System.Drawing.Size(169, 28);
             this.cbBrand.TabIndex = 1;
             this.cbBrand.SelectedIndexChanged += new System.EventHandler(this.FilterEvent);
             // 
@@ -83,6 +84,7 @@
             this.dgvItems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvItems.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(61)))), ((int)(((byte)(64)))));
             this.dgvItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvItems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Raised;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -92,7 +94,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvItems.Location = new System.Drawing.Point(215, 120);
+            this.dgvItems.Location = new System.Drawing.Point(215, 133);
             this.dgvItems.Margin = new System.Windows.Forms.Padding(4);
             this.dgvItems.MultiSelect = false;
             this.dgvItems.Name = "dgvItems";
@@ -100,17 +102,19 @@
             this.dgvItems.RowHeadersVisible = false;
             this.dgvItems.RowHeadersWidth = 51;
             this.dgvItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvItems.Size = new System.Drawing.Size(793, 336);
+            this.dgvItems.Size = new System.Drawing.Size(866, 336);
             this.dgvItems.TabIndex = 2;
             // 
             // txtNombre
             // 
             this.txtNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
-            this.txtNombre.Location = new System.Drawing.Point(380, 36);
+            this.txtNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombre.ForeColor = System.Drawing.Color.LightGray;
+            this.txtNombre.Location = new System.Drawing.Point(381, 41);
             this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.MaxLength = 50;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(202, 22);
+            this.txtNombre.Size = new System.Drawing.Size(202, 26);
             this.txtNombre.TabIndex = 3;
             this.txtNombre.TextChanged += new System.EventHandler(this.FilterEvent);
             // 
@@ -118,7 +122,7 @@
             // 
             this.buttonBrandWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonBrandWindow.Font = new System.Drawing.Font("Lucida Sans Typewriter", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBrandWindow.Location = new System.Drawing.Point(52, 485);
+            this.buttonBrandWindow.Location = new System.Drawing.Point(52, 498);
             this.buttonBrandWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonBrandWindow.Name = "buttonBrandWindow";
             this.buttonBrandWindow.Size = new System.Drawing.Size(152, 31);
@@ -131,7 +135,7 @@
             // 
             this.buttonCategoryWindow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCategoryWindow.Font = new System.Drawing.Font("Lucida Sans Typewriter", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonCategoryWindow.Location = new System.Drawing.Point(244, 485);
+            this.buttonCategoryWindow.Location = new System.Drawing.Point(244, 498);
             this.buttonCategoryWindow.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCategoryWindow.Name = "buttonCategoryWindow";
             this.buttonCategoryWindow.Size = new System.Drawing.Size(161, 31);
@@ -189,7 +193,7 @@
             this.lblDescription.AutoSize = true;
             this.lblDescription.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescription.ForeColor = System.Drawing.Color.LightGray;
-            this.lblDescription.Location = new System.Drawing.Point(211, 64);
+            this.lblDescription.Location = new System.Drawing.Point(211, 70);
             this.lblDescription.Name = "lblDescription";
             this.lblDescription.Size = new System.Drawing.Size(103, 22);
             this.lblDescription.TabIndex = 14;
@@ -198,30 +202,35 @@
             // txtCode
             // 
             this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
-            this.txtCode.Location = new System.Drawing.Point(215, 34);
+            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.ForeColor = System.Drawing.Color.LightGray;
+            this.txtCode.Location = new System.Drawing.Point(215, 41);
             this.txtCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtCode.MaxLength = 50;
             this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(121, 22);
+            this.txtCode.Size = new System.Drawing.Size(121, 26);
             this.txtCode.TabIndex = 15;
             this.txtCode.TextChanged += new System.EventHandler(this.FilterEvent);
             // 
             // txtDescription
             // 
             this.txtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
-            this.txtDescription.Location = new System.Drawing.Point(215, 86);
+            this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescription.ForeColor = System.Drawing.Color.LightGray;
+            this.txtDescription.Location = new System.Drawing.Point(215, 92);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescription.MaxLength = 50;
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(292, 22);
+            this.txtDescription.Size = new System.Drawing.Size(292, 26);
             this.txtDescription.TabIndex = 16;
             this.txtDescription.TextChanged += new System.EventHandler(this.FilterEvent);
             // 
             // numPriceMin
             // 
             this.numPriceMin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
+            this.numPriceMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPriceMin.ForeColor = System.Drawing.Color.LightGray;
-            this.numPriceMin.Location = new System.Drawing.Point(684, 87);
+            this.numPriceMin.Location = new System.Drawing.Point(697, 93);
             this.numPriceMin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numPriceMin.Maximum = new decimal(new int[] {
             9999999,
@@ -229,7 +238,7 @@
             0,
             0});
             this.numPriceMin.Name = "numPriceMin";
-            this.numPriceMin.Size = new System.Drawing.Size(120, 22);
+            this.numPriceMin.Size = new System.Drawing.Size(120, 26);
             this.numPriceMin.TabIndex = 17;
             this.numPriceMin.ValueChanged += new System.EventHandler(this.FilterEvent);
             this.numPriceMin.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numPriceMin_KeyUp);
@@ -239,7 +248,7 @@
             this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrice.ForeColor = System.Drawing.Color.LightGray;
-            this.lblPrice.Location = new System.Drawing.Point(549, 89);
+            this.lblPrice.Location = new System.Drawing.Point(549, 95);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(59, 22);
             this.lblPrice.TabIndex = 18;
@@ -250,7 +259,7 @@
             this.lblMin.AutoSize = true;
             this.lblMin.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMin.ForeColor = System.Drawing.Color.LightGray;
-            this.lblMin.Location = new System.Drawing.Point(639, 89);
+            this.lblMin.Location = new System.Drawing.Point(639, 95);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(41, 22);
             this.lblMin.TabIndex = 19;
@@ -261,7 +270,7 @@
             this.lblMax.AutoSize = true;
             this.lblMax.Font = new System.Drawing.Font("Microsoft New Tai Lue", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMax.ForeColor = System.Drawing.Color.LightGray;
-            this.lblMax.Location = new System.Drawing.Point(832, 89);
+            this.lblMax.Location = new System.Drawing.Point(845, 95);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(44, 22);
             this.lblMax.TabIndex = 20;
@@ -270,8 +279,9 @@
             // numPriceMax
             // 
             this.numPriceMax.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
+            this.numPriceMax.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPriceMax.ForeColor = System.Drawing.Color.LightGray;
-            this.numPriceMax.Location = new System.Drawing.Point(885, 87);
+            this.numPriceMax.Location = new System.Drawing.Point(898, 93);
             this.numPriceMax.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numPriceMax.Maximum = new decimal(new int[] {
             9999999,
@@ -279,7 +289,7 @@
             0,
             0});
             this.numPriceMax.Name = "numPriceMax";
-            this.numPriceMax.Size = new System.Drawing.Size(120, 22);
+            this.numPriceMax.Size = new System.Drawing.Size(120, 26);
             this.numPriceMax.TabIndex = 21;
             this.numPriceMax.ValueChanged += new System.EventHandler(this.FilterEvent);
             this.numPriceMax.KeyUp += new System.Windows.Forms.KeyEventHandler(this.numPriceMax_KeyUp);
@@ -294,73 +304,8 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 469);
+            this.panel1.Size = new System.Drawing.Size(200, 482);
             this.panel1.TabIndex = 22;
-            // 
-            // cbCategory
-            // 
-            this.cbCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
-            this.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbCategory.ForeColor = System.Drawing.Color.LightGray;
-            this.cbCategory.FormattingEnabled = true;
-            this.cbCategory.Location = new System.Drawing.Point(625, 34);
-            this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
-            this.cbCategory.Name = "cbCategory";
-            this.cbCategory.Size = new System.Drawing.Size(179, 24);
-            this.cbCategory.TabIndex = 23;
-            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.FilterEvent);
-            // 
-            // buttonViewDetails
-            // 
-            this.buttonViewDetails.FlatAppearance.BorderSize = 0;
-            this.buttonViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonViewDetails.ForeColor = System.Drawing.Color.LightGray;
-            this.buttonViewDetails.IconChar = FontAwesome.Sharp.IconChar.Info;
-            this.buttonViewDetails.IconColor = System.Drawing.Color.LightGray;
-            this.buttonViewDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonViewDetails.IconSize = 55;
-            this.buttonViewDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonViewDetails.Location = new System.Drawing.Point(0, 106);
-            this.buttonViewDetails.Name = "buttonViewDetails";
-            this.buttonViewDetails.Padding = new System.Windows.Forms.Padding(6);
-            this.buttonViewDetails.Size = new System.Drawing.Size(200, 95);
-            this.buttonViewDetails.TabIndex = 0;
-            this.buttonViewDetails.Text = "Ver detalles";
-            this.buttonViewDetails.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonViewDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonViewDetails.UseVisualStyleBackColor = true;
-            this.buttonViewDetails.Click += new System.EventHandler(this.iconButton1_Click);
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 100);
-            this.panel2.TabIndex = 0;
-            // 
-            // buttonDeleteItem
-            // 
-            this.buttonDeleteItem.FlatAppearance.BorderSize = 0;
-            this.buttonDeleteItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDeleteItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDeleteItem.ForeColor = System.Drawing.Color.LightGray;
-            this.buttonDeleteItem.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
-            this.buttonDeleteItem.IconColor = System.Drawing.Color.LightGray;
-            this.buttonDeleteItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.buttonDeleteItem.IconSize = 55;
-            this.buttonDeleteItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteItem.Location = new System.Drawing.Point(0, 339);
-            this.buttonDeleteItem.Name = "buttonDeleteItem";
-            this.buttonDeleteItem.Padding = new System.Windows.Forms.Padding(6);
-            this.buttonDeleteItem.Size = new System.Drawing.Size(200, 102);
-            this.buttonDeleteItem.TabIndex = 1;
-            this.buttonDeleteItem.Text = "Eliminar";
-            this.buttonDeleteItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonDeleteItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonDeleteItem.UseVisualStyleBackColor = true;
-            this.buttonDeleteItem.Click += new System.EventHandler(this.buttonDeleteItem_Click_2);
             // 
             // buttonAddItem
             // 
@@ -384,12 +329,78 @@
             this.buttonAddItem.UseVisualStyleBackColor = true;
             this.buttonAddItem.Click += new System.EventHandler(this.buttonAddItem_Click_2);
             // 
+            // buttonDeleteItem
+            // 
+            this.buttonDeleteItem.FlatAppearance.BorderSize = 0;
+            this.buttonDeleteItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteItem.ForeColor = System.Drawing.Color.LightGray;
+            this.buttonDeleteItem.IconChar = FontAwesome.Sharp.IconChar.TrashAlt;
+            this.buttonDeleteItem.IconColor = System.Drawing.Color.LightGray;
+            this.buttonDeleteItem.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.buttonDeleteItem.IconSize = 55;
+            this.buttonDeleteItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteItem.Location = new System.Drawing.Point(0, 339);
+            this.buttonDeleteItem.Name = "buttonDeleteItem";
+            this.buttonDeleteItem.Padding = new System.Windows.Forms.Padding(6);
+            this.buttonDeleteItem.Size = new System.Drawing.Size(200, 102);
+            this.buttonDeleteItem.TabIndex = 1;
+            this.buttonDeleteItem.Text = "Eliminar";
+            this.buttonDeleteItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonDeleteItem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonDeleteItem.UseVisualStyleBackColor = true;
+            this.buttonDeleteItem.Click += new System.EventHandler(this.buttonDeleteItem_Click_2);
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 0;
+            // 
+            // buttonViewDetails
+            // 
+            this.buttonViewDetails.FlatAppearance.BorderSize = 0;
+            this.buttonViewDetails.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonViewDetails.ForeColor = System.Drawing.Color.LightGray;
+            this.buttonViewDetails.IconChar = FontAwesome.Sharp.IconChar.Info;
+            this.buttonViewDetails.IconColor = System.Drawing.Color.LightGray;
+            this.buttonViewDetails.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.buttonViewDetails.IconSize = 55;
+            this.buttonViewDetails.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonViewDetails.Location = new System.Drawing.Point(0, 106);
+            this.buttonViewDetails.Name = "buttonViewDetails";
+            this.buttonViewDetails.Padding = new System.Windows.Forms.Padding(6);
+            this.buttonViewDetails.Size = new System.Drawing.Size(200, 95);
+            this.buttonViewDetails.TabIndex = 0;
+            this.buttonViewDetails.Text = "Ver detalles";
+            this.buttonViewDetails.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonViewDetails.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonViewDetails.UseVisualStyleBackColor = true;
+            this.buttonViewDetails.Click += new System.EventHandler(this.iconButton1_Click);
+            // 
+            // cbCategory
+            // 
+            this.cbCategory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
+            this.cbCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCategory.ForeColor = System.Drawing.Color.LightGray;
+            this.cbCategory.FormattingEnabled = true;
+            this.cbCategory.Location = new System.Drawing.Point(625, 41);
+            this.cbCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.cbCategory.Name = "cbCategory";
+            this.cbCategory.Size = new System.Drawing.Size(179, 28);
+            this.cbCategory.TabIndex = 23;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.FilterEvent);
+            // 
             // TPWinforms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(38)))), ((int)(((byte)(37)))));
-            this.ClientSize = new System.Drawing.Size(1090, 469);
+            this.ClientSize = new System.Drawing.Size(1163, 482);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.numPriceMax);
@@ -410,7 +421,7 @@
             this.Controls.Add(this.dgvItems);
             this.Controls.Add(this.cbBrand);
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(912, 483);
+            this.MinimumSize = new System.Drawing.Size(1181, 529);
             this.Name = "TPWinforms";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TPWinforms";
